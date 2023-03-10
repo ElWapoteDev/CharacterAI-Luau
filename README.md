@@ -47,8 +47,8 @@ local myCharacter = MySession:GetMainPageCharacters().Body.Animals[1] -- Selects
 
 local response = myCharacter:SendMessage("MyKey", "Hi Twilight Sparkle!!!") -- Sends a message to Twilight Sparkle with key "MyKey"
 -- The key is a string that identifies the chat session with Twilight Sparkle 
--– We use “MyKey” as our key for this chat session
--– We can use different keys for different chat sessions
+-- We use “MyKey” as our key for this chat session
+-- We can use different keys for different chat sessions
 
 print(response) -- Prints Twilight Sparkle response
 ```
