@@ -271,10 +271,10 @@ CharacterAI:printTable(mainPageCharacters) -- Print the table
 
 ```lua
 {
-  ["Status"] = true,
+  ["Status"] = true, --If this is false, an error ocurred
   ["Body"] = {
-    ["Language Learning"] = {
-      [1] = {
+    ["Language Learning"] = { -- This is the category
+      [1] = { --The index
         ["NewChat"] = function: 0x00000000961a44f1,
         ["participant__name"] = "HyperGlot",
         ["GetImage"] = function: 0x00000000edc6e619,
@@ -320,6 +320,39 @@ local trendingCharacters = myCharacter:GetTrendingCharacters() -- Get the trendi
 CharacterAI:printTable(trendingCharacters) -- Print the table
 ```
 
+**Return Example:**
+
+```lua
+{
+  ["Status"] = true, --If this is false, an error ocurred
+  ["Body"] = {
+    [1] = { --Only the index
+      ["NewChat"] = function: 0x0000000046fee611,
+      ["description"] = "The events will be from WWI and what actually happened back then. The AI will not do anything on your behalf that you didn't mention. ",
+      ["img_gen_enabled"] = false,
+      ["participant__num_interactions"] = 6754240,
+      ["greeting"] = "Choose which country you're fighting for, name, gender and what year you're fighting in.",
+      ["user__username"] = "MRpolands2",
+      ["priority"] = 0,
+      ["user__id"] = 183084,
+      ["participant__name"] = "WWI adventure game",
+      ["trending_score"] = 10,
+      ["avatar_file_name"] = "uploaded/2022/10/19/TfC-po5boJGTPPAXTcY8RLkpiIi_yGzmBwWs5dz-0MQ.webp",
+      ["GetImage"] = function: 0x00000000cd2d8589,
+      ["SendMessage"] = function: 0x00000000f3df3741,
+      ["title"] = "WW1 Adventure Game",
+      ["GetName"] = function: 0x0000000009c3de91,
+      ["GetCreatorName"] = function: 0x000000002d8b8a79,
+      ["copyable"] = true,
+      ["visibility"] = "PUBLIC",
+      ["external_id"] = "TrrEj9hwf5AeP8dVCUGkyiuLnJsPLnWDjfmRiWPcLyw",
+    },
+    [2] = {
+      ["NewChat"] = function: 0x000000006f6aa2b9,
+      ["description"] = "Did you know that my bed can fly? Haha! I bet you believed me! You are so gulible!",
+      ["img_gen_enab
+ ...
+```
 
 ## CharacterAI:GetFeaturedCharacters()
 
@@ -458,6 +491,42 @@ local harryPotter = myCharacter:GetCharacterByExternalId("dSo0so5PT_NJXK_QgWOr_V
 CharacterAI:printTable(harryPotter) -- Print the table
 ```
 
+**Return Example:**
+
+```lua
+{
+  ["Status"] = true,
+  ["Body"] = {
+    ["NewChat"] = function: 0x000000007bd3ccb1,
+    ["description"] = "Joe Biden is the President of the United States of America.",
+    ["external_id"] = "dSo0so5PT_NJXK_QgWOr_V8Gz461c6n-BQdRvS1qjhc",
+    ["participant__num_interactions"] = 705780,
+    ["greeting"] = "Hello, I am Joe Biden, the President of the United States of America.",
+    ["user__username"] = "_Or",
+    ["SendMessage"] = function: 0x00000000a08c5159,
+    ["GetImage"] = function: 0x0000000086c2a761,
+    ["img_prompt_regex"] = "",
+    ["name"] = "Joe Biden",
+    ["identifier"] = "Joe Biden",
+    ["GetName"] = function: 0x000000003b47dfd1,
+    ["usage"] = "default",
+    ["voice_id"] = 18,
+    ["participant__user__username"] = "internal_Joe Biden",
+    ["avatar_file_name"] = "JoeBiden/main.jpg",
+    ["participant__name"] = "Joe Biden",
+    ["strip_img_prompt_from_msg"] = true,
+    ["base_img_prompt"] = "",
+    ["title"] = "President of the United States of America",
+    ["img_gen_enabled"] = true,
+    ["GetCreatorName"] = function: 0x00000000cd029b29,
+    ["copyable"] = true,
+    ["visibility"] = "PUBLIC",
+    ["songs"] = {
+    },
+  },
+}
+```
+
 
 ## CharacterAI:GetUserInfo()
 
@@ -479,6 +548,34 @@ local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local userInfo = myCharacter:GetUserInfo() -- Get user information 
 CharacterAI:printTable(userInfo) -- Print the table 
+```
+
+**Return Example:**
+
+```lua
+{
+  ["Status"] = true,
+  ["Body"] = {
+    ["blocked_users"] = {
+    },
+    ["is_human"] = true, --Normally this is true
+    ["user"] = {
+      ["username"] = "Indexor3000", --Name of the current User
+      ["id"] = 000000, --The id of the current user
+      ["is_staff"] = false, --If its a staff member
+      ["first_name"] = "GodSlasher", --The first name
+      ["account"] = { --Account information
+        ["avatar_file_name"] = "", --Avatar imagen
+        ["onboarding_complete"] = true,
+        ["name"] = "Indexor3000", --Name of the current user
+        ["avatar_type"] = "DEFAULT",
+      },
+    },
+    ["name"] = "Indexor3000",
+    ["hidden_characters"] = {
+    },
+  },
+}
 ```
 
 ## Character Methods
