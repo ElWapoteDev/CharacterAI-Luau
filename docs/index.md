@@ -38,7 +38,7 @@ local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/E
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local categories = myCharacter:GetCategories() -- Get the list of categories
-print(categories) -- Print the table
+CharacterAI:printTable(categories) -- Print the table
 ```
 
 
@@ -83,7 +83,7 @@ local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/E
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local mainPageCharacters = myCharacter:GetMainPageCharacters() -- Get the main page characters
-print(mainPageCharacters) -- Print the table
+CharacterAI:printTable(mainPageCharacters) -- Print the table
 ```
 
 
@@ -106,7 +106,7 @@ local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/E
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local trendingCharacters = myCharacter:GetTrendingCharacters() -- Get the trending characters
-print(trendingCharacters) -- Print the table
+CharacterAI:printTable(trendingCharacters) -- Print the table
 ```
 
 
@@ -129,7 +129,7 @@ local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/E
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local featuredCharacters = myCharacter:GetFeaturedCharacters() -- Get the featured characters
-print(featuredCharacters) -- Print the table
+CharacterAI:printTable(featuredCharacters) -- Print the table
 ```
 
 
@@ -152,7 +152,7 @@ local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/E
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local recommendedCharacters = myCharacter:GetRecommendedCharacters() -- Get the recommended characters
-print(recommendedCharacters) -- Print the table
+CharacterAI:printTable(recommendedCharacters) -- Print the table
 ```
 
 
@@ -175,7 +175,7 @@ local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/E
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local userCharacters = myCharacter:GetUserCharacters() -- Get the user characters
-print(userCharacters) -- Print the table
+CharacterAI:printTable(userCharacters) -- Print the table
 ```
 
 
@@ -198,7 +198,7 @@ local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/E
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local recentCharacters = myCharacter:GetRecentCharacters() -- Get the recent characters
-print(recentCharacters) -- Print the table
+CharacterAI:printTable(recentCharacters) -- Print the table
 ```
 
 
@@ -221,7 +221,7 @@ local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/E
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local searchedCharacters = myCharacter:SearchCharacters("Harry Potter") -- Search for characters related to Harry Potter
-print(searchedCharacters) -- Print the table
+CharacterAI:printTable(searchedCharacters) -- Print the table
 ```
 
 
@@ -244,7 +244,7 @@ local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/E
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local harryPotter = myCharacter:GetCharacterByExternalId("dSo0so5PT_NJXK_QgWOr_V8Gz461c6n-BQdRvS1qjhc") -- Get Joe Biden by his external id
-print(harryPotter) -- Print the table
+CharacterAI:printTable(harryPotter) -- Print the table
 ```
 
 
@@ -267,7 +267,7 @@ local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/E
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local userInfo = myCharacter:GetUserInfo() -- Get user information 
-print(userInfo) -- Print the table 
+CharacterAI:printTable(userInfo) -- Print the table 
 ```
 
 ## Character Methods
@@ -289,9 +289,9 @@ local harryPotter = myCharacter:GetCharacterByExternalId("dSo0so5PT_NJXK_QgWOr_V
 print(harryPotter:GetName()) -- Print Joe Biden name 
 print(harryPotter:GetCreatorName()) -- Print Joe Biden creator name 
 local newChat = harryPotter:NewChat(1) -- Create a new chat session with Joe Biden and store it with key 1
-print(newChat) -- Print the chat session information 
+CharacterAI:printTable(newChat) -- Print the chat session information 
 local sendMessage = harryPotter:SendMessage(1, "Hello Harry!") -- Send a message to Joe Biden in chat session 1 and get his response 
-print(sendMessage) -- Print the message and response information 
+CharacterAI:printTable(sendMessage) -- Print the message and response information 
 local getImage = harryPotter:GetImage() -- Get Joe Biden avatar image 
 print(getImage) -- Print Joe Biden avatar image 
 ```
@@ -318,7 +318,7 @@ local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/E
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local newChat = myCharacter:NewChat("dSo0so5PT_NJXK_QgWOr_V8Gz461c6n-BQdRvS1qjhc") -- Create a new chat session with Joe Biden
-print(newChat) -- Print the table 
+CharacterAI:printTable(newChat) -- Print the table 
 ```
 
 
@@ -345,7 +345,7 @@ local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local newChat = myCharacter:NewChat("dSo0so5PT_NJXK_QgWOr_V8Gz461c6n-BQdRvS1qjhc") -- Create a new chat session with Harry Potter
 local sendMessage = myCharacter:SendMessage("dSo0so5PT_NJXK_QgWOr_V8Gz461c6n-BQdRvS1qjhc", newChat['Body']['external_id'], newChat['Body']['participants'][2]['user']['username'], "Hello Joe!") -- Send a message to Joe Biden and get his response 
-print(sendMessage) -- Print the table 
+CharacterAI:printTable(sendMessage) -- Print the table 
 ```
 
 ## Misc Functions
