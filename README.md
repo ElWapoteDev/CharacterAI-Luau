@@ -40,15 +40,29 @@ You can then interact with the character using methods such as `SendMessage()`, 
 For example:
 
 ```lua
+-- Load the CharacterAI module from a URL
 local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))();
 
-local MySession = CharacterAI.new() --We login as a guest
-local myCharacter = MySession:GetMainPageCharacters().Body.Animals[1] -- Selects Twilight Sparkle
+-- Create a new session with CharacterAI as a guest, u can put ur token
+local MySession = CharacterAI.new()
 
-local response = myCharacter:SendMessage("MyKey", "Hi Twilight Sparkle!!!") -- Sends a message to Twilight Sparkle with key "MyKey"
--- The key is a string that identifies the chat session with Twilight Sparkle 
+-- Get the first character from the main page animals category (Twilight Sparkle)
+local myCharacter = MySession:GetMainPageCharacters().Body.Animals[1]
+
+-- Send a message to Twilight Sparkle with the key "MyKey"
+-- The key is a string that identifies the chat session with Twilight Sparkle
 -- We use “MyKey” as our key for this chat session
 -- We can use different keys for different chat sessions
+local response = myCharacter:SendMessage("MyKey", "Hi Twilight Sparkle!!!")
 
-print(response) -- Prints Twilight Sparkle response
+-- Check if the message was sent successfully
+if response['Status'] == false then 
+    warn(response.Body) -- If not, print a warning message
+end
+
+-- Print only Twilight Sparkle's reply text
+print(response.Body.replies[1].text)
+
+-- Print the full table of the response
+CharacterAI:printTable(response.Body)
 ```
