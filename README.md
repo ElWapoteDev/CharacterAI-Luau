@@ -1,4 +1,4 @@
-**[Complete Documentation 📚](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md)**
+**[Go to Complete Documentation 📚](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md)**
 
 ## Getting Started!
 
