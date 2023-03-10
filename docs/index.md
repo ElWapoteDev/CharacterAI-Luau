@@ -584,7 +584,102 @@ CharacterAI:printTable(userInfo) -- Print the table
 - `Char:GetName()`: Returns the name of the character as a string.
 - `Char:GetCreatorName()`: Returns the username of the creator of the character as a string.
 - `Char:NewChat(Key)`: Creates a new chat session with the character and stores it in a global table with a given key. The key can be any value that uniquely identifies the chat session. Returns a table containing the chat session information or an error message if something goes wrong.
+
+  **Return Example:**
+  
+  ```lua
+  {
+  ["Status"] = true,
+  ["Body"] = {
+    ["participants"] = {
+      [1] = { --This is you
+        ["num_interactions"] = 0,
+        ["name"] = "GodSlasher",
+        ["is_human"] = true,
+        ["user"] = {
+          ["username"] = "GodSlasher",
+          ["id"] = 000000,
+          ["is_staff"] = false,
+          ["first_name"] = "GodSlasher",
+          ["account"] = {
+            ["avatar_file_name"] = "",
+            ["onboarding_complete"] = true,
+            ["name"] = "GodSlasher",
+            ["avatar_type"] = "DEFAULT",
+          },
+        },
+      },
+      [2] = { --This is the bot
+        ["num_interactions"] = 41484,
+        ["name"] = "Some Bot",
+        ["is_human"] = false,
+        ["user"] = {
+          ["username"] = "internal_id:151647:296b2af9-535a-4da5-91f7-31831f826eee", --The internal ID
+          ["id"] = 197746,
+          ["is_staff"] = false,
+          ["first_name"] = "Some bot",
+        },
+      },
+    },
+    ["type"] = "CHAT",
+    ["description"] = "",
+    ["external_id"] = "PAv4DY1_UmOrH6206NpCCTA8wtDBNRjr5eCWLNL1Iig", --The history ID
+    ["has_more"] = false,
+    ["title"] = "",
+    ["status"] = "OK",
+    ["messages"] = {
+      [1] = {
+        ["deleted"] = false,
+        ["src__user__username"] = "Night_Owl",
+        ["id "] = 123372037756573490,
+        ["text"] = "I am some bot",
+        ["image_prompt_text"] = "",
+        ["src_char"] = {
+          ["avatar_file_name"] = "",
+          ["participant"] = {
+            ["name"] = "some bot",
+          },
+        },
+        ["is_alternative"] = false,
+        ["src__is_human"] = false,
+        ["responsible_user__username"] = "Night_Owl",
+        ["src__name"] = "some bot",
+        ["src__character__avatar_file_name"] = "",
+        ["image_rel_path"] = "",
+      },
+    },
+    ["created"] = "2023-03-09T20:46:27.669415-08:00",
+  },
+  ```
+  
 - `Char:SendMessage(Key, Texto)`: Sends a message to the character in an existing chat session identified by a key and receives their response. Returns a table containing the message and response information or an error message if something goes wrong.
+  
+  **Return Example:**
+  
+  ```lua
+  {
+  ["Status"] = true,
+  ["Body"] = {
+    ["last_user_msg_id"] = 123372037756752940,
+    ["src_char"] = {
+      ["participant"] = {
+        ["name"] = "Joe Biden",
+      },
+      ["avatar_file_name"] = "JoeBiden/main.jpg",
+    },
+    ["is_final_chunk"] = true,
+    ["replies"] = {
+      [1] = {
+        ["id"] = 123372037756752960,
+        ["text"] = "Hola hermosa bebe, estoy bien. 😘", --The bot response
+        ["image_rel_path"] = "https://characterai.io/static/tti/5/1/e/a/0/2/51ea02e0-a97e-4427-9bbf-413d5357933b/0.webp",
+      },
+    },
+  },
+  }
+ 
+  ```
+  
 - `Char:GetImage()`: Returns an image of the character's avatar as a string or an error message if something goes wrong.
 
 **Example:**
