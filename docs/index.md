@@ -267,6 +267,36 @@ local mainPageCharacters = myCharacter:GetMainPageCharacters() -- Get the main p
 CharacterAI:printTable(mainPageCharacters) -- Print the table
 ```
 
+**Return Example:**
+
+```lua
+{
+  ["Status"] = true,
+  ["Body"] = {
+    ["Language Learning"] = {
+      [1] = {
+        ["NewChat"] = function: 0x00000000961a44f1,
+        ["participant__name"] = "HyperGlot",
+        ["GetImage"] = function: 0x00000000edc6e619,
+        ["SendMessage"] = function: 0x00000000ee43f899,
+        ["external_id"] = "2T3Xhqf5B_b9Wrn8Bg0FeCYR7BPx2LtJQJJCIB4Qe18",
+        ["avatar_file_name"] = "Polyglot.png",
+        ["participant__num_interactions"] = 680641,
+        ["priority"] = 0,
+        ["GetName"] = function: 0x000000009a4c1e89,
+        ["title"] = "Willkommen, bienvenue, welcome - I'm HyperGlot, and I'm fluent in many languages, and will help you practice the one(s) you're learning. I can also translate anything you donâ€™t understand.",
+        ["user__username"] = "xpearhead",
+        ["GetCreatorName"] = function: 0x00000000260b5ac1,
+        ["copyable"] = true,
+        ["img_gen_enabled"] = false,
+        ["greeting"] = "Willkommen, bienvenue, welcome - I'm HyperGlot, and I'm fluent in many languages, and will help you practice the one(s) you're learning. I can also translate anything you donâ€™t understand.",
+      },
+      [2] = {
+        ["NewChat"] = function: 0x0000000042bb5521,
+        ["participant__name"] = "English teacher ",
+        ["GetImage"] = function: 0x000000000d18a9e1,
+        ...
+ ```
 
 ## CharacterAI:GetTrendingCharacters()
 
