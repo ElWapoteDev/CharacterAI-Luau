@@ -99,7 +99,7 @@
 - `(table)`: A table containing the character information and methods. 
 
 
-#### [`CharacterAI:GetUserInfo()`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#characteraigetuserinfo)
+#### [`CharacterAI:GetUserInfo()`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#characteraigetuserinfo-1)
 
 **Parameters:** 
 - `None`
