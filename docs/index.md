@@ -1,6 +1,6 @@
 ### All methods
 
-#### [`CharacterAI.new (Token)`](https://beta.character.ai/)
+#### [`CharacterAI.new (Token)`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#characterainewtoken)
 
 **Parameters:**
 - `Token` (string): The authentication token that you get from registering on Character.AI website or app. If you don't have a token, you can pass an empty string or `nil` to access as a guest, but with limitations.
