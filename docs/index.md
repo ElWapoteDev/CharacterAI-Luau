@@ -9,7 +9,7 @@
 - `(table)`: A table containing the `CharacterAI` object.
 
 
-#### `CharacterAI:GetCategories()`
+#### [`CharacterAI:GetCategories()`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#characteraigetcategories-1)
 
 **Parameters:**
 - None
@@ -18,7 +18,7 @@
 - `(table)`: A table containing the names and IDs of the categories.
 
 
-#### `CharacterAI:UserIsInWaitlist()`
+#### [`CharacterAI:UserIsInWaitlist()`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#characteraiuserisinwaitlist-1)
 
 **Parameters:**
 - None
@@ -27,7 +27,7 @@
 - `(boolean)`: `true` if the user is in the waitlist, `false` otherwise.
 
 
-#### `CharacterAI:GetMainPageCharacters()`
+#### [`CharacterAI:GetMainPageCharacters()`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#characteraigetmainpagecharacters-1)
 
 **Parameters:**
 - None
@@ -36,7 +36,7 @@
 - `(table)`: A table containing the characters by curated category.
 
 
-#### `CharacterAI:GetTrendingCharacters()`
+#### [`CharacterAI:GetTrendingCharacters()`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#characteraigettrendingcharacters-1)
 
 **Parameters:**
 - None
@@ -45,7 +45,7 @@
 - `(table)`: A table containing the trending characters.
 
 
-#### `CharacterAI:GetFeaturedCharacters()`
+#### [`CharacterAI:GetFeaturedCharacters()`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#characteraigetfeaturedcharacters-1)
 
 **Parameters:**
 - None
@@ -54,7 +54,7 @@
 - `(table)`: A table containing the featured characters.
 
 
-#### `CharacterAI:GetRecommendedCharacters()`
+#### [`CharacterAI:GetRecommendedCharacters()`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#characteraigetrecommendedcharacters-1)
 
 **Parameters:**
 - None
@@ -63,7 +63,7 @@
 - `(table)`: A table containing the recommended characters.
 
 
-#### `CharacterAI:GetUserCharacters()`
+#### [`CharacterAI:GetUserCharacters()`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#characteraigetusercharacters-1)
 
 **Parameters:**
 - None
@@ -72,7 +72,7 @@
 - `(table)`: A table containing the user characters.
 
 
-#### `CharacterAI:GetRecentCharacters()`
+#### [`CharacterAI:GetRecentCharacters()`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#characteraigetrecentcharacters-1)
 
 **Parameters:**
 - None
@@ -81,7 +81,7 @@
 - `(table)`: A table containing the recent characters.
 
 
-#### `CharacterAI:SearchCharacters(Query)`
+#### [`CharacterAI:SearchCharacters(Query)`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#characteraisearchcharactersquery-1)
 
 **Parameters:** 
 - `Query` (string): The query string to search for characters.
@@ -90,7 +90,7 @@
 - `(table)`: A table containing the characters that match the query. 
 
 
-#### `CharacterAI:GetCharacterByExternalId(external_character_id)`
+#### [`CharacterAI:GetCharacterByExternalId(external_character_id)`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#characteraigetcharacterbyexternalidexternal_character_id-1)
 
 **Parameters:** 
 - `external_character_id` (string): The external character id of the character to get. 
@@ -99,7 +99,16 @@
 - `(table)`: A table containing the character information and methods. 
 
 
-#### `CharacterAI.NewChat(char_external_id)`
+#### [`CharacterAI:GetUserInfo()`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#characteraigetuserinfo)
+
+**Parameters:** 
+- `None`
+
+**Returns:** 
+- `(table)`: A table containing current user information.
+
+
+#### [`CharacterAI:NewChat()`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#character-methods)
 
 **Parameters:** 
 - `char_external_id` (string): The external character id of the character to chat with. 
@@ -108,7 +117,7 @@
 - Either a table containing chat session information or an error message. 
 
 
-#### `CharacterAI.SendMessage(char_external_id, history_external_id, internal_id, Text)`
+#### [`CharacterAI:SendMessage(char_external_id, history_external_id, internal_id, Text)`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#character-methods)
 
 **Parameters:** 
 - `char_external_id` (string): The external character id of the character to chat with. 
@@ -120,7 +129,7 @@
 - Either a table containing message and response information or an error message. 
 
 
-#### `printTable(tbl)`
+#### [`printTable(tbl)`](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md#characteraiprinttabletable)
 
 **Parameters:** 
 - `tbl` (table) : The Lua table to print its contents.  
