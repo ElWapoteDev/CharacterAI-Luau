@@ -281,7 +281,7 @@ function CharacterAI.new(Token)
 👋 Hello there!
 
 📝 This script utilizes the (unofficial) Character.AI API wrapper module.
-🔍 You can obtain this module at: github.com/
+🔍 You can obtain this module at: https://github.com/ElWapoteDev/CharacterAI-Luau
 👨‍💻 Created by ElGuapoDeHuapos.
 🔖 Version: ]]..CharacterAI.Version..[[
 
