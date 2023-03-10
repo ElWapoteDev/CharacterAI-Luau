@@ -40,7 +40,10 @@ You can then interact with the character using methods such as `SendMessage()`, 
 For example:
 
 ```lua
-local myCharacter = myCharacter:GetMainPageCharacters().Body.Animals[1] -- Selects Twilight Sparkle
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))();
+
+local MySession = CharacterAI.new() --We login as a guest
+local myCharacter = MySession:GetMainPageCharacters().Body.Animals[1] -- Selects Twilight Sparkle
 local response = myCharacter:SendMessage("Hi Twilight Sparkle!!!") -- Sends a message to Spongebob
 print(response) -- Prints Twilight Sparkle response
 ```
