@@ -270,7 +270,7 @@ local userInfo = myCharacter:GetUserInfo() -- Get user information
 print(userInfo) -- Print the table 
 ```
 
-### Character Methods
+## Character Methods
 **Methods:**
 
 - `Char:GetName()`: Returns the name of the character as a string.
@@ -297,7 +297,7 @@ print(getImage) -- Print Joe Biden avatar image
 ```
 
 
-### Chat functions
+## Chat functions
 
 ## CharacterAI:NewChat(char_external_id)
 
