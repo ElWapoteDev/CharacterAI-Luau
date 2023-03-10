@@ -267,6 +267,15 @@ function CharacterAI.new(Token)
 		TokenGlobal = Token['Body'];
 		self.Guest = true
 
+			warn([[
+👋 Hello there!
+📝 This script utilizes the (unofficial) Character.AI API wrapper module.
+🔍 You can obtain this module at: https://github.com/ElWapoteDev/CharacterAI-Luau
+👨‍💻 Created by ElGuapoDeHuapos.
+🔖 Version: ]]..CharacterAI.Version..[[
+👉 This is a brief readme that will be printed in the console.
+	]])
+		
 		return self
 	end;
 	TokenGlobal = Token
