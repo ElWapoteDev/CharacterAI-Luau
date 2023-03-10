@@ -181,6 +181,47 @@ local categories = myCharacter:GetCategories() -- Get the list of categories
 CharacterAI:printTable(categories) -- Print the table
 ```
 
+**Return Example:**
+
+```lua
+{
+  ["Status"] = true,
+  ["Body"] = {
+    ["categories"] = {
+      [1] = {
+        ["name"] = "Helpers",
+        ["description"] = "Helpers",
+      },
+      [2] = {
+        ["name"] = "Famous People",
+        ["description"] = "Famous People",
+      },
+      [3] = {
+        ["name"] = "Games",
+        ["description"] = "Games",
+      },
+      [4] = {
+        ["name"] = "Image Generating",
+        ["description"] = "Image Generating",
+      },
+      [5] = {
+        ["name"] = "VTuber",
+        ["description"] = "Vtubers",
+      },
+      [6] = {
+        ["name"] = "Game Characters",
+        ["description"] = "Game Characters",
+      },
+      [7] = {
+        ["name"] = "Anime",
+        ["description"] = "Anime characters",
+      },
+      [8] = {
+        ["name"] = "Action",
+        ["descript
+ ...
+```
+
 
 ## CharacterAI:UserIsInWaitlist()
 
