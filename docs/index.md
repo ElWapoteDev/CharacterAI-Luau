@@ -426,14 +426,14 @@ local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/E
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local harryPotter = myCharacter:GetCharacterByExternalId("dSo0so5PT_NJXK_QgWOr_V8Gz461c6n-BQdRvS1qjhc") -- Get Joe Biden character object
-print(harryPotter:GetName()) -- Print Joe Biden name 
-print(harryPotter:GetCreatorName()) -- Print Joe Biden creator name 
-local newChat = harryPotter:NewChat(1) -- Create a new chat session with Joe Biden and store it with key 1
+print(harryPotter.Body:GetName()) -- Print Joe Biden name 
+print(harryPotter.Body:GetCreatorName()) -- Print Joe Biden creator name 
+local newChat = harryPotter.Body:NewChat(1) -- Create a new chat session with Joe Biden and store it with key 1
 CharacterAI:printTable(newChat) -- Print the chat session information 
-local sendMessage = harryPotter:SendMessage(1, "Hello Harry!") -- Send a message to Joe Biden in chat session 1 and get his response 
+local sendMessage = harryPotter.Body:SendMessage(1, "Hello Harry!") -- Send a message to Joe Biden in chat session 1 and get his response 
 CharacterAI:printTable(sendMessage) -- Print the message and response information 
-local getImage = harryPotter:GetImage() -- Get Joe Biden avatar image 
-print(getImage) -- Print Joe Biden avatar image 
+local getImage = harryPotter.Body:GetImage() -- Get Joe Biden avatar image 
+print(getImage.Body) -- Print Joe Biden avatar image 
 ```
 
 
