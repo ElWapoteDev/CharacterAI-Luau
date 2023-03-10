@@ -1,3 +1,5 @@
+<a href="https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md">Documentación completa</a>
+
 ## Getting Started!
 
 This section will help you get started with CharacterAI-Luau, a library that allows you to interact with the Character.AI API. The Character.AI API allows you to create conversational chatbots with different personalities based on famous characters or your own creations.
