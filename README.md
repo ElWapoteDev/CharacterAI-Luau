@@ -1,4 +1,4 @@
-<a href="https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md">Documentación completa</a>
+**[Complete Documentation 📚](https://github.com/ElWapoteDev/CharacterAI-Luau/blob/main/docs/index.md)**
 
 ## Getting Started!
 
