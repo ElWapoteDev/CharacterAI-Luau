@@ -1,8 +1,10 @@
 ### All methods
 
 `CharacterAI.new (Token)`
+
 **Parameters:**
 - Token (string): The authentication token that you get from registering on Character.AI website or app. If you don't have a token, you can pass an empty string or nil to access as a guest, but with limitations.
+
 **Returns:**
 - (table): A table containing the CharacterAI object.
 
