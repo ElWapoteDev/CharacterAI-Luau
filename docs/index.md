@@ -347,3 +347,53 @@ local newChat = myCharacter:NewChat("dSo0so5PT_NJXK_QgWOr_V8Gz461c6n-BQdRvS1qjhc
 local sendMessage = myCharacter:SendMessage("dSo0so5PT_NJXK_QgWOr_V8Gz461c6n-BQdRvS1qjhc", newChat['Body']['external_id'], newChat['Body']['participants'][2]['user']['username'], "Hello Joe!") -- Send a message to Joe Biden and get his response 
 print(sendMessage) -- Print the table 
 ```
+
+## Misc Functions
+
+## CharacterAI:printTable(table)
+
+takes a Lua table tbl as input and prints its contents in a human-readable format to the console. It is useful for debugging and inspecting the contents of complex Lua tables.
+
+**Parameters:**
+- (table): The Lua table to print
+
+**Return:**
+- (None)
+
+**Example:**
+
+```lua
+local CharacterAI = require("CharacterAI")
+local myTable = {
+    name = "John",
+    age = 30,
+    hobbies = {"reading", "gaming", "coding"},
+    address = {
+        street = "123 Main St",
+        city = "Anytown",
+        state = "CA",
+        zip = "12345"
+    }
+}
+CharacterAI:printTable(myTable)
+```
+
+This will print the contents of myTable to the console in the following format:
+
+```lua
+{
+  ["name"] = "John",
+  ["age"] = 30,
+  ["hobbies"] = {
+    [1] = "reading",
+    [2] = "gaming",
+    [3] = "coding",
+  },
+  ["address"] = {
+    ["street"] = "123 Main St",
+    ["city"] = "Anytown",
+    ["state"] = "CA",
+    ["zip"] = "12345",
+  },
+}
+```
