@@ -13,7 +13,7 @@ This function creates a new CharacterAI object that can be used to interact with
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI") -- Require the library
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 ```
@@ -34,7 +34,7 @@ This function returns a list of categories that are available on Character.AI. C
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI") -- Require the library
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local categories = myCharacter:GetCategories() -- Get the list of categories
@@ -57,7 +57,7 @@ This function checks if the user is in the waitlist to access Character.AI. The 
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI") -- Require the library
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local waitlist = myCharacter:UserIsInWaitlist() -- Check if user is in waitlist
@@ -79,7 +79,7 @@ This function returns a table of characters that are displayed on the main page 
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI") -- Require the library
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local mainPageCharacters = myCharacter:GetMainPageCharacters() -- Get the main page characters
@@ -102,7 +102,7 @@ This function returns a list of trending characters on Character.AI. Trending ch
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI") -- Require the library
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local trendingCharacters = myCharacter:GetTrendingCharacters() -- Get the trending characters
@@ -125,7 +125,7 @@ This function returns a list of featured characters on Character.AI. Featured ch
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI") -- Require the library
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local featuredCharacters = myCharacter:GetFeaturedCharacters() -- Get the featured characters
@@ -148,7 +148,7 @@ This function returns a list of recommended characters on Character.AI. Recommen
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI") -- Require the library
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local recommendedCharacters = myCharacter:GetRecommendedCharacters() -- Get the recommended characters
@@ -171,7 +171,7 @@ This function returns a list of user characters on Character.AI. User characters
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI") -- Require the library
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local userCharacters = myCharacter:GetUserCharacters() -- Get the user characters
@@ -194,7 +194,7 @@ This function returns a list of recent characters on Character.AI. Recent charac
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI") -- Require the library
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local recentCharacters = myCharacter:GetRecentCharacters() -- Get the recent characters
@@ -217,7 +217,7 @@ This function searches for characters on Character.AI based on a query string. T
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI") -- Require the library
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local searchedCharacters = myCharacter:SearchCharacters("Harry Potter") -- Search for characters related to Harry Potter
@@ -240,7 +240,7 @@ This function returns a character on Character.AI based on an external character
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI") -- Require the library
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local harryPotter = myCharacter:GetCharacterByExternalId("dSo0so5PT_NJXK_QgWOr_V8Gz461c6n-BQdRvS1qjhc") -- Get Joe Biden by his external id
@@ -263,7 +263,7 @@ This function returns information about the user on Character.AI. User informati
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI") -- Require the library
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local userInfo = myCharacter:GetUserInfo() -- Get user information 
@@ -282,7 +282,7 @@ print(userInfo) -- Print the table
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI") -- Require the library
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local harryPotter = myCharacter:GetCharacterByExternalId("dSo0so5PT_NJXK_QgWOr_V8Gz461c6n-BQdRvS1qjhc") -- Get Joe Biden character object
@@ -314,7 +314,7 @@ This function creates a new chat session with a character on Character.AI based 
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI") -- Require the library
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local newChat = myCharacter:NewChat("dSo0so5PT_NJXK_QgWOr_V8Gz461c6n-BQdRvS1qjhc") -- Create a new chat session with Joe Biden
@@ -340,7 +340,7 @@ This function sends a message to a character on Character.AI and receives their 
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI") -- Require the library
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -- Your token goes here
 local myCharacter = CharacterAI.new(myToken) -- Create a new CharacterAI object with your token
 local newChat = myCharacter:NewChat("dSo0so5PT_NJXK_QgWOr_V8Gz461c6n-BQdRvS1qjhc") -- Create a new chat session with Harry Potter
@@ -363,7 +363,7 @@ takes a Lua table tbl as input and prints its contents in a human-readable forma
 **Example:**
 
 ```lua
-local CharacterAI = require("CharacterAI")
+local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); -- Require the library
 local myTable = {
     name = "John",
     age = 30,
