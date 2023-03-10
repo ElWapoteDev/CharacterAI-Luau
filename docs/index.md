@@ -8,92 +8,135 @@
 **Returns:**
 - (table): A table containing the CharacterAI object.
 
+
 `CharacterAI:GetCategories()`
+
 **Parameters:**
 - None
+
 **Returns:**
 - (table): A table containing the names and IDs of the categories.
 
+
 `CharacterAI:UserIsInWaitlist()`
+
 **Parameters:**
 - None
+
 **Returns:**
 - (boolean): True if the user is in the waitlist, false otherwise.
 
+
 `CharacterAI:GetMainPageCharacters()`
+
 **Parameters:**
 - None
+
 **Returns:**
 - (table): A table containing the characters by curated category.
 
+
 `CharacterAI:GetTrendingCharacters()`
+
 **Parameters:**
 - None
+
 **Returns:**
 - (table): A table containing the trending characters.
 
+
 `CharacterAI:GetFeaturedCharacters()`
+
 **Parameters:**
 - None
+
 **Returns:**
 - (table): A table containing the featured characters.
 
+
 `CharacterAI:GetRecommendedCharacters()`
+
 **Parameters:**
 - None
+
 **Returns:**
 - (table): A table containing the recommended characters.
 
+
 `CharacterAI:GetUserCharacters()`
+
 **Parameters:**
 - None
+
 **Returns:**
 - (table): A table containing the user characters.
 
+
 `CharacterAI:GetRecentCharacters()`
+
 **Parameters:**
 - None
+
 **Returns:**
 - (table): A table containing the recent characters.
 
+
 `CharacterAI:SearchCharacters(Query)`
+
 **Parameters:** 
 - Query (string): The query string to search for characters.
+
 **Returns:** 
 - (table): A table containing the characters that match the query. 
 
+
 `CharacterAI:GetCharacterByExternalId(external_character_id)`
+
 **Parameters:** 
 - external_character_id (string): The external character id of the character to get. 
+
 **Returns:** 
 - (table): A table containing the character information and methods. 
 
+
 `CharacterAI.NewChat(char_external_id)`
+
 **Parameters:** 
 - char_external_id (string): The external character id of the character to chat with. 
+
 **Returns:** 
 - Either a table containing chat session information or an error message. 
 
+
 `CharacterAI.SendMessage(char_external_id, history_external_id, internal_id, Text)`
+
 **Parameters:** 
 - char_external_id (string): The external character id of the character to chat with. 
 - history_external_id(string) : The external history id of chat session.
 - internal_id(string) : The internal id of chat session.
 - Text(string) : The message text to send to character.
+
 **Returns:** 
 - Either a table containing message and response information or an error message. 
 
+
 `printTable(tbl)`
+
 **Parameters:** 
 - tbl(table) : The Lua table to print its contents.  
+
 **Returns:** 
 - Nothing, but prints out a human-readable format of tbl to console.
 
+
 `printTable(tbl)`
+
 **Parameters:**
 - tbl (table): The Lua table to print its contents.
+
 **Returns:**
 - Nothing, but prints out a human-readable format of tbl to console.
+
 
 ## CharacterAI.new(Token)
 
