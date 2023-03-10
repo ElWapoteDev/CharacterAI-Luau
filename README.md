@@ -44,6 +44,11 @@ local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/E
 
 local MySession = CharacterAI.new() --We login as a guest
 local myCharacter = MySession:GetMainPageCharacters().Body.Animals[1] -- Selects Twilight Sparkle
-local response = myCharacter:SendMessage("Hi Twilight Sparkle!!!") -- Sends a message to Spongebob
+
+local response = myCharacter:SendMessage("MyKey", "Hi Twilight Sparkle!!!") -- Sends a message to Twilight Sparkle with key "MyKey"
+-- The key is a string that identifies the chat session with Twilight Sparkle 
+-– We use “MyKey” as our key for this chat session
+-– We can use different keys for different chat sessions
+
 print(response) -- Prints Twilight Sparkle response
 ```
