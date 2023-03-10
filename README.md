@@ -16,6 +16,21 @@ To use CharacterAI-Luau, you need:
 - Obtain a token from the Character.AI website. While this step is optional, it is highly recommended in order to avoid any limitations.
 - An internet connection
 
+### How to get my Character.AI Token?
+To obtain your Character.AI token, please follow these steps:
+
+1. Go to the Character.AI website by clicking on this [link](https://beta.character.ai/).
+2. Sign in or create an account if you haven't already.
+3. Once you are logged in, open the Developer Console by right-clicking anywhere on the page and selecting `Inspect` or `Inspect Element`.
+4. In the Developer Console, navigate to the `Application` tab.
+5. In the `Application` tab, click on `Local Storage` in the left-hand menu.
+6. Under `Local Storage`, you will find `https://beta.character.ai/`. Click on it to expand.
+7. Look for the "char_token" key, which should have a JSON value that looks like this: `{"value":"YourTokenHere","ttl":IgnoreThis}`.
+8. Copy the `value` of the `char_token` key, which is your Character.AI token.
+
+Congratulations, you have successfully obtained your Character.AI token!
+
+
 ### Installation
 
 To install CharacterAI-Luau, follow these steps:
