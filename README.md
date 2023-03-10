@@ -25,7 +25,7 @@ local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/E
 
 ### Configuration
 
-To configure CharacterAI-Luau, you need to create a new CharacterAI object using local myCharacter = CharacterAI.new(myToken), where myToken is your authentication token from Character.AI website or app. Your authentication token should be a string of random numbers and letters, like this: "14x9f411581z7vF1aRx9Aaf6d70x141jhf0S82cb5" (Example token).
+To configure CharacterAI-Luau, you need to create a new CharacterAI object using local myCharacter = CharacterAI.new(myToken), where myToken is your authentication token from Character.AI website or app. Your authentication token should be a string of random numbers and letters, like this: `14x9f411581z7vF1aRx9Aaf6d70x141jhf0S82cb5` (Example token).
 
 If you don't have a token, you can pass an empty string or nil to access as a guest, but with limitations.
 
