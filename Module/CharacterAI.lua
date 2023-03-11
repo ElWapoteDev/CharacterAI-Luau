@@ -3,7 +3,7 @@ local Http = game:GetService("HttpService");
 local fetch = syn.request
 
 local CharacterAI = {}
-CharacterAI.Version = '1.3'
+CharacterAI.Version = '1.4'
 CharacterAI.__index = CharacterAI
 
 CharacterAI.GlobalSabes = {}
@@ -93,6 +93,36 @@ function CharacterAI:printTable(tbl)
 	print("}")
 end
 
+function CharacterAI:SplitText(Texto)
+    MiAssert(Texto, 'No text provided')
+    local Dividido = string.split(Texto, " ")
+    local Partes = {}
+    local Contaodor = 1
+    Partes[Contaodor] = {}
+    
+    for index, texto in pairs(Dividido) do
+        local Tamano = #texto
+        
+        if (not Partes[Contaodor]['Tamano']) then
+            Partes[Contaodor]['Tamano'] = 0
+        end
+        if (not Partes[Contaodor]['Texto']) then
+            Partes[Contaodor]['Texto'] = {}
+        end
+        
+        
+        Partes[Contaodor]['Tamano'] = Partes[Contaodor]['Tamano'] + Tamano
+
+        table.insert(Partes[Contaodor]['Texto'], texto)
+        
+        if Partes[Contaodor]['Tamano'] > 150 then
+            Contaodor = Contaodor + 1
+            Partes[Contaodor] = {}
+        end
+    end
+    
+    return Partes
+end
 
 
 function CharacterAI:GetHeaders(IncluyeToken: boolean)
@@ -220,6 +250,22 @@ function AddFunctionsToCharacter(Char)
 		end;
 
 		return History;
+	end;
+	
+	function Char:DeleteChat(Key)
+		MiAssert(Key, 'No key provided');
+		if (not CharacterAI.GlobalSabes[Char.external_id]) then
+			return false;
+		end;
+		
+		if (not CharacterAI.GlobalSabes[Char.external_id][Key]) then
+			return false;
+		end;
+		
+		CharacterAI.GlobalSabes[Char.external_id][Key] = nil
+		
+		return true;
+		
 	end;
 
 	function Char:SendMessage(Key, Texto)
