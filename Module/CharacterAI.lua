@@ -680,6 +680,11 @@ function CharacterAI:GetUserInfo()
 	return GenerarStatus(true, Respuesta['Body']['user']);
 end;
 
+function CharacterAI:GlobalHistoryReset()
+	CharacterAI.GlobalSabes = {};
+	return true;
+end;
+
 function CharacterAI:NewChat(char_external_id)
 	MiAssert(char_external_id, 'No character_external_id provided.')
 
