@@ -3,7 +3,7 @@ local Http = game:GetService("HttpService");
 local fetch = syn.request
 
 local CharacterAI = {}
-CharacterAI.Version = '1.0'
+CharacterAI.Version = '1.1'
 CharacterAI.__index = CharacterAI
 
 CharacterAI.GlobalSabes = {}
@@ -52,12 +52,12 @@ function CharacterAI:printTable(tbl)
 				printTableHelper(v, indent + 2)
 				print(indentStr .. "},")
 			else
-			    if type(k) == 'string' then
+				if type(k) == 'string' then
 					if type(v) == 'string' then
-					    print(indentStr .. '["'.. tostring(k)..'"]' .. " = " .. '"'.. tostring(v) ..'"'.. ",")
+						print(indentStr .. '["'.. tostring(k)..'"]' .. " = " .. '"'.. tostring(v) ..'"'.. ",")
 
 					else
-    					print(indentStr .. '["'.. tostring(k)..'"]' .. " = " .. tostring(v) .. ",")							
+						print(indentStr .. '["'.. tostring(k)..'"]' .. " = " .. tostring(v) .. ",")							
 					end
 
 					continue;
@@ -100,7 +100,7 @@ function CharacterAI:HTTPRequest(url: string, metodo: string, cuerpo: any, OnlyB
 	MiAssert(metodo, 'No method provided');
 
 	if (table.find(NoBody, metodo) == nil) and (cuerpo == nil) then
-        MiAssert(false, 'No body provided');
+		MiAssert(false, 'No body provided');
 	end
 
 	local Opciones = {
@@ -124,7 +124,7 @@ function CharacterAI:HTTPRequest(url: string, metodo: string, cuerpo: any, OnlyB
 				warn('No body, return full response');
 			end
 
-		    return GenerarStatus(true, err);
+			return GenerarStatus(true, err);
 		end
 
 		err['Body'] = CleanJSON(err['Body'])
@@ -145,8 +145,8 @@ function SesionGuest()
 	local uuid = Http:GenerateGUID();
 
 	local Respuesta = CharacterAI:HTTPRequest(Url, 'POST', {
-	    lazy_uuid = uuid
-    }, true)
+		lazy_uuid = uuid
+	}, true)
 
 	if (Respuesta['Status'] == false) then
 		return GenerarStatus(false, 'An error occurred while retrieving GUEST credentials.'.. Respuesta['Body']);
@@ -167,17 +167,17 @@ function VerifyToken(Token)
 end;
 
 function AddFunctionsToCharacter(Char)
-    Char['GetName'] = function()
-	    return Char.participant__name
+	Char['GetName'] = function()
+		return Char.participant__name
 	end
 
-    Char['GetCreatorName'] = function()
-	    return Char.user__username;
+	Char['GetCreatorName'] = function()
+		return Char.user__username;
 	end;
 
 	function Char:NewChat(Key)
-	    MiAssert(Key, 'No key provided')
-	    local History = CharacterAI:NewChat(Char.external_id)
+		MiAssert(Key, 'No key provided')
+		local History = CharacterAI:NewChat(Char.external_id)
 		local RobotExist = false
 
 		if (History['Status'] == false) then
@@ -185,11 +185,11 @@ function AddFunctionsToCharacter(Char)
 		end;
 
 		if (not CharacterAI.GlobalSabes[Char.external_id]) then
-		    CharacterAI.GlobalSabes[Char.external_id] = {}
+			CharacterAI.GlobalSabes[Char.external_id] = {}
 		end
 		CharacterAI.GlobalSabes[Char.external_id][Key] = {}
 		CharacterAI.GlobalSabes[Char.external_id][Key]['history'] = History['Body']['external_id']
-        
+
 		for index, participant in pairs(History['Body']['participants']) do
 			if (participant['is_human']) then
 				continue;
@@ -201,20 +201,20 @@ function AddFunctionsToCharacter(Char)
 
 
 		if (RobotExist == false) then
-	        return GenerarStatus(false, 'There is no robot in this conversation. It may be an error. Please try reloading the conversation.')
+			return GenerarStatus(false, 'There is no robot in this conversation. It may be an error. Please try reloading the conversation.')
 		end;
 
 		return History;
 	end;
 
 	function Char:SendMessage(Key, Texto)
-	    MiAssert(Key, 'No key provided')
-	    if (not CharacterAI.GlobalSabes[Char.external_id]) or (not CharacterAI.GlobalSabes[Char.external_id][Key]) then
+		MiAssert(Key, 'No key provided')
+		if (not CharacterAI.GlobalSabes[Char.external_id]) or (not CharacterAI.GlobalSabes[Char.external_id][Key]) then
 			Char:NewChat(Key);
 			print('Nuevo chat inicializado')
 		end;
 
-	    local Response = CharacterAI:SendMessage(Char.external_id, 
+		local Response = CharacterAI:SendMessage(Char.external_id, 
 			CharacterAI.GlobalSabes[Char.external_id][Key]['history'],
 			CharacterAI.GlobalSabes[Char.external_id][Key]['internal'],
 			Texto
@@ -225,6 +225,19 @@ function AddFunctionsToCharacter(Char)
 	end;
 
 	Char['GetImage'] = function()
+		local FolderPath = "CharacterAi/"
+		local fileName = Char.participant__name..'/'..Char.user__username;
+		local customAsset 
+
+		do
+			customAsset = getsynasset or getcustomasset
+		end
+
+		if isfile(FolderPath .. fileName .. ".png") then
+			return customAsset(FolderPath .. fileName .. ".png");
+		end;
+		
+		
 		local Url = 'https://characterai.io/i/400/static/avatars/'..Char.avatar_file_name
 		local succ, Respuesta = pcall(function()
 			return game:HttpGet(Url)
@@ -234,29 +247,19 @@ function AddFunctionsToCharacter(Char)
 			return GenerarStatus(false, 'Cant get image of this character');
 		end;
 
-		local fileName = Char.participant__name..'/'..Char.user__username;
-		local FolderPath = "CharacterAi/"
-		
+
 		if (not isfolder('CharacterAi')) then
 			makefolder('CharacterAi')
 		end
-		
-		local customAsset 
-		
-		do
-			customAsset = getsynasset or getcustomasset
-		end
-		
+
+
 		local function SetIcon(url, fileName)
 			fileName = fileName:gsub("%p", "");
-			local Image
-			if isfile(FolderPath .. fileName .. ".png") then
-				Image = customAsset(FolderPath .. fileName .. ".png") 
-			else writefile(FolderPath .. fileName .. ".png", url);
-				Image = customAsset(FolderPath.. fileName .. ".png")
-			end; return Image
+			writefile(FolderPath .. fileName .. ".png", url);
+			local Image = customAsset(FolderPath.. fileName .. ".png")
+			return Image
 		end;
-		
+
 		local Image = SetIcon(Respuesta, fileName)
 
 		return GenerarStatus(true, Image)
@@ -278,7 +281,7 @@ function CharacterAI.new(Token)
 		TokenGlobal = Token['Body'];
 		self.Guest = true
 
-			warn([[
+		warn([[
 👋 Hello there!
 📝 This script utilizes the (unofficial) Character.AI API wrapper module.
 🔍 You can obtain this module at: https://github.com/ElWapoteDev/CharacterAI-Luau
@@ -286,7 +289,7 @@ function CharacterAI.new(Token)
 🔖 Version: ]]..CharacterAI.Version..[[
 👉 This is a brief readme that will be printed in the console.
 	]])
-		
+
 		return self
 	end;
 	TokenGlobal = Token
@@ -294,7 +297,7 @@ function CharacterAI.new(Token)
 	MiAssert(tostring(Token), 'Invalid Token!')
 
 	local TokenJalando = VerifyToken(TokenGlobal)
-	
+
 	MiAssert(TokenJalando['Status'] == true, 'Invalid Token!')
 
 	warn([[
@@ -312,15 +315,15 @@ function CharacterAI.new(Token)
 end;
 
 function CharacterAI:GetCategories()
-    local Url = 'https://beta.character.ai/chat/character/categories/'
-   	local Respuesta = CharacterAI:HTTPRequest(Url, 'GET', nil, true)
+	local Url = 'https://beta.character.ai/chat/character/categories/'
+	local Respuesta = CharacterAI:HTTPRequest(Url, 'GET', nil, true)
 
 	return Respuesta
 end
 
 function CharacterAI:UserIsInWaitlist()
-    local Url = 'https://beta.character.ai/chat/config/';
-   	local Respuesta = CharacterAI:HTTPRequest(Url, 'GET', nil, true);
+	local Url = 'https://beta.character.ai/chat/config/';
+	local Respuesta = CharacterAI:HTTPRequest(Url, 'GET', nil, true);
 
 	if (Respuesta['Status'] == false) then
 		warn(Respuesta['Body']);
@@ -331,7 +334,7 @@ function CharacterAI:UserIsInWaitlist()
 end
 
 function CharacterAI:GetMainPageCharacters()
-    local Url = 'https://beta.character.ai/chat/curated_categories/characters/';
+	local Url = 'https://beta.character.ai/chat/curated_categories/characters/';
 	local Respuesta = CharacterAI:HTTPRequest(Url, 'GET', nil, true);
 
 	if (Respuesta['Status'] == false) then
@@ -348,23 +351,23 @@ function CharacterAI:GetMainPageCharacters()
 	end
 
 	return setmetatable({
-        Body = setmetatable(CharsByCategory, {
-            __index = function(tbl, key)
-                warn("Attempt to index non-existent value in CharsByCategory table")
-                return GenerarStatus(false, 'Index out of range')
-            end
-        })
-    }, {
-        __index = function(tbl, key)
-            if key == "Status" then
-                return true
-            end
-        end
-    });
+		Body = setmetatable(CharsByCategory, {
+			__index = function(tbl, key)
+				warn("Attempt to index non-existent value in CharsByCategory table")
+				return GenerarStatus(false, 'Index out of range')
+			end
+		})
+	}, {
+		__index = function(tbl, key)
+			if key == "Status" then
+				return true
+			end
+		end
+	});
 end
 
 function CharacterAI:GetTrendingCharacters()
-    local Url = 'https://beta.character.ai/chat/characters/trending/';
+	local Url = 'https://beta.character.ai/chat/characters/trending/';
 	local Respuesta = CharacterAI:HTTPRequest(Url, 'GET', nil, true);
 
 	if (Respuesta['Status'] == false) then
@@ -379,23 +382,23 @@ function CharacterAI:GetTrendingCharacters()
 	end;
 
 	return setmetatable({
-        Body = setmetatable(TrendingCharacters, {
-            __index = function(tbl, key)
-                warn("Attempt to index non-existent value in TrendingCharacters table")
-                return GenerarStatus(false, 'Index out of range')
-            end
-        })
-    }, {
-        __index = function(tbl, key)
-            if key == "Status" then
-                return true
-            end
-        end
-    });
+		Body = setmetatable(TrendingCharacters, {
+			__index = function(tbl, key)
+				warn("Attempt to index non-existent value in TrendingCharacters table")
+				return GenerarStatus(false, 'Index out of range')
+			end
+		})
+	}, {
+		__index = function(tbl, key)
+			if key == "Status" then
+				return true
+			end
+		end
+	});
 end;
 
 function CharacterAI:GetFeaturedCharacters()
-    local Url = 'https://beta.character.ai/chat/characters/featured_v2/';
+	local Url = 'https://beta.character.ai/chat/characters/featured_v2/';
 	local Respuesta = CharacterAI:HTTPRequest(Url, 'GET', nil, true);
 
 	if (Respuesta['Status'] == false) then
@@ -410,23 +413,23 @@ function CharacterAI:GetFeaturedCharacters()
 	end;
 
 	return setmetatable({
-        Body = setmetatable(FeaturedCharacters, {
-            __index = function(tbl, key)
-                warn("Attempt to index non-existent value in FeaturedCharacters table")
-                return GenerarStatus(false, 'Index out of range')
-            end
-        })
-    }, {
-        __index = function(tbl, key)
-            if key == "Status" then
-                return true
-            end
-        end
-    });
+		Body = setmetatable(FeaturedCharacters, {
+			__index = function(tbl, key)
+				warn("Attempt to index non-existent value in FeaturedCharacters table")
+				return GenerarStatus(false, 'Index out of range')
+			end
+		})
+	}, {
+		__index = function(tbl, key)
+			if key == "Status" then
+				return true
+			end
+		end
+	});
 end;
 
 function CharacterAI:GetRecommendedCharacters()
-    local Url = 'https://beta.character.ai/chat/characters/recommended/';
+	local Url = 'https://beta.character.ai/chat/characters/recommended/';
 	local Respuesta = CharacterAI:HTTPRequest(Url, 'GET', nil, true);
 
 	if (Respuesta['Status'] == false) then
@@ -441,23 +444,23 @@ function CharacterAI:GetRecommendedCharacters()
 	end;
 
 	return setmetatable({
-        Body = setmetatable(RecommendedCharacters, {
-            __index = function(tbl, key)
-                warn("Attempt to index non-existent value in RecommendedCharacters table")
-                return GenerarStatus(false, 'Index out of range')
-            end
-        })
-    }, {
-        __index = function(tbl, key)
-            if key == "Status" then
-                return true
-            end
-        end
-    });
+		Body = setmetatable(RecommendedCharacters, {
+			__index = function(tbl, key)
+				warn("Attempt to index non-existent value in RecommendedCharacters table")
+				return GenerarStatus(false, 'Index out of range')
+			end
+		})
+	}, {
+		__index = function(tbl, key)
+			if key == "Status" then
+				return true
+			end
+		end
+	});
 end;
 
 function CharacterAI:GetUserCharacters()
-    local Url = 'https://beta.character.ai/chat/characters/?scope=user';
+	local Url = 'https://beta.character.ai/chat/characters/?scope=user';
 	local Respuesta = CharacterAI:HTTPRequest(Url, 'GET', nil, true);
 
 	if (Respuesta['Status'] == false) then
@@ -472,23 +475,23 @@ function CharacterAI:GetUserCharacters()
 	end;
 
 	return setmetatable({
-        Body = setmetatable(UserCharacters, {
-            __index = function(tbl, key)
-                warn("Attempt to index non-existent value in UserCharacters table")
-                return GenerarStatus(false, 'Index out of range')
-            end
-        })
-    }, {
-        __index = function(tbl, key)
-            if key == "Status" then
-                return true
-            end
-        end
-    });
+		Body = setmetatable(UserCharacters, {
+			__index = function(tbl, key)
+				warn("Attempt to index non-existent value in UserCharacters table")
+				return GenerarStatus(false, 'Index out of range')
+			end
+		})
+	}, {
+		__index = function(tbl, key)
+			if key == "Status" then
+				return true
+			end
+		end
+	});
 end;
 
 function CharacterAI:GetRecentCharacters()
-    local Url = 'https://beta.character.ai/chat/characters/recent/';
+	local Url = 'https://beta.character.ai/chat/characters/recent/';
 	local Respuesta = CharacterAI:HTTPRequest(Url, 'GET', nil, true);
 
 	if (Respuesta['Status'] == false) then
@@ -503,27 +506,27 @@ function CharacterAI:GetRecentCharacters()
 	end;
 
 	return setmetatable({
-        Body = setmetatable(RecentCharacters, {
-            __index = function(tbl, key)
-                warn("Attempt to index non-existent value in RecentCharacters table")
-                return GenerarStatus(false, 'Index out of range')
-            end
-        })
-    }, {
-        __index = function(tbl, key)
-            if key == "Status" then
-                return true
-            end
-        end
-    });
+		Body = setmetatable(RecentCharacters, {
+			__index = function(tbl, key)
+				warn("Attempt to index non-existent value in RecentCharacters table")
+				return GenerarStatus(false, 'Index out of range')
+			end
+		})
+	}, {
+		__index = function(tbl, key)
+			if key == "Status" then
+				return true
+			end
+		end
+	});
 end;
 
 function CharacterAI:SearchCharacters(Query)
-    Query = tostring(Query)
-    if (Query == nil) then 
+	Query = tostring(Query)
+	if (Query == nil) then 
 		return GenerarStatus(false, 'No query provided')
 	end
-    local Url = 'https://beta.character.ai/chat/characters/search/?query='..Http:UrlEncode(Query);
+	local Url = 'https://beta.character.ai/chat/characters/search/?query='..Http:UrlEncode(Query);
 	local Respuesta = CharacterAI:HTTPRequest(Url, 'GET', nil, true);
 
 	if (Respuesta['Status'] == false) then
@@ -542,24 +545,24 @@ function CharacterAI:SearchCharacters(Query)
 	end;
 
 	return setmetatable({
-        Body = setmetatable(RecentCharacters, {
-            __index = function(tbl, key)
-                warn("Attempt to index non-existent value in Search table")
-                return GenerarStatus(false, 'Index out of range')
-            end
-        })
-    }, {
-        __index = function(tbl, key)
-            if key == "Status" then
-                return true
-            end
-        end
-    });
+		Body = setmetatable(RecentCharacters, {
+			__index = function(tbl, key)
+				warn("Attempt to index non-existent value in Search table")
+				return GenerarStatus(false, 'Index out of range')
+			end
+		})
+	}, {
+		__index = function(tbl, key)
+			if key == "Status" then
+				return true
+			end
+		end
+	});
 end;
 
 function CharacterAI:GetCharacterByExternalId(external_character_id)
-    MiAssert(external_character_id, 'No external character id provided');
-    local Url = 'https://beta.character.ai/chat/character/info-cached/'..external_character_id..'/';
+	MiAssert(external_character_id, 'No external character id provided');
+	local Url = 'https://beta.character.ai/chat/character/info-cached/'..external_character_id..'/';
 	local Respuesta = CharacterAI:HTTPRequest(Url, 'GET', nil, true);
 
 	if (Respuesta['Status'] == false) then
@@ -573,11 +576,11 @@ function CharacterAI:GetCharacterByExternalId(external_character_id)
 end;
 
 function CharacterAI:GetUserInfo()
-    local Url = 'https://beta.character.ai/chat/user/';
+	local Url = 'https://beta.character.ai/chat/user/';
 
 	local Respuesta = CharacterAI:HTTPRequest(Url, 'GET', nil, true);
 
-    if (Respuesta['Status'] == false) then
+	if (Respuesta['Status'] == false) then
 		return Respuesta
 	end;
 
@@ -587,10 +590,10 @@ function CharacterAI:GetUserInfo()
 end;
 
 function CharacterAI:NewChat(char_external_id)
-    MiAssert(char_external_id, 'No character_external_id provided.')
+	MiAssert(char_external_id, 'No character_external_id provided.')
 
-    if (not tostring(char_external_id)) then
-	    return GenerarStatus(false, 'Invalid external id provided')
+	if (not tostring(char_external_id)) then
+		return GenerarStatus(false, 'Invalid external id provided')
 	end;
 
 	local Url = 'https://beta.character.ai/chat/history/create/';
@@ -602,12 +605,12 @@ function CharacterAI:NewChat(char_external_id)
 end
 
 function CharacterAI:SendMessage(char_external_id, history_external_id, internal_id, Text)
-    MiAssert(char_external_id, 'No char_external_id provided');
+	MiAssert(char_external_id, 'No char_external_id provided');
 	MiAssert(history_external_id, 'No history_external_id provided');
 	MiAssert(internal_id, 'No internal_id provided');
 	MiAssert(Text, 'No Text provided');
 
-    local Url = 'https://beta.character.ai/chat/streaming/'
+	local Url = 'https://beta.character.ai/chat/streaming/'
 	local Respuesta = CharacterAI:HTTPRequest(Url, 'POST', {
 		history_external_id = history_external_id,
 		character_external_id = char_external_id,
