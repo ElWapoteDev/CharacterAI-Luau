@@ -9,6 +9,21 @@ CharacterAI.__index = CharacterAI
 CharacterAI.GlobalSabes = {}
 local TokenGlobal = nil;
 
+function RedondearNumero(numero)
+	local numero_final = ""
+	local numero = tonumber(numero)
+
+	if numero >= 1000000 then
+		numero_final = tostring(math.floor(numero/1000000)).."m"
+	elseif numero >= 1000 then
+		numero_final = tostring(math.floor(numero/1000)).."k"
+	else
+		numero_final = tostring(numero)
+	end
+
+	return numero_final
+end
+
 function CleanJSON(Respuesta)
 	local UltimaTabla = Respuesta:match("%b{}")
 	for Tabla in Respuesta:gmatch("%b{}") do
@@ -223,6 +238,20 @@ function AddFunctionsToCharacter(Char)
 		return Response
 		--CharacterAI:printTable(Response)
 	end;
+	
+	function Char:GetInteractions(Round)
+		local Num;
+		
+		if (not Char['participant__num_interactions']) then
+			return 0;
+		end
+		
+		if (Round == true) then
+			return RedondearNumero(Char.participant__num_interactions)
+		end
+		
+		return Char.participant__num_interactions
+        end;
 
 	Char['GetImage'] = function()
 		local FolderPath = "CharacterAi/"
