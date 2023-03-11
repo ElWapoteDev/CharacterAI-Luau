@@ -252,6 +252,22 @@ function AddFunctionsToCharacter(Char)
 		
 		return Char.participant__num_interactions
         end;
+	
+	function Char:GetDescription()
+		if (Char['title']) and (Char['title'] ~= "") then
+			return Char['title'];
+		end;
+		
+		if (Char['greeting']) and (Char['greeting'] ~= "") then
+			return Char['greeting'];
+		end;
+		
+		if (Char['participant__name']) and (Char['participant__name'] ~= "") then
+			return Char['participant__name'];
+		end;
+		
+		return "";
+	end;
 
 	Char['GetImage'] = function()
 		local FolderPath = "CharacterAi/"
