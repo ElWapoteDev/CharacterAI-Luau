@@ -225,8 +225,8 @@ function AddFunctionsToCharacter(Char)
 	end;
 
 	Char['GetImage'] = function()
-	    local Url = 'https://characterai.io/i/400/static/avatars/'..Char.avatar_file_name
-	    local succ, Respuesta = pcall(function()
+		local Url = 'https://characterai.io/i/400/static/avatars/'..Char.avatar_file_name
+		local succ, Respuesta = pcall(function()
 			return game:HttpGet(Url)
 		end) 
 
@@ -234,21 +234,32 @@ function AddFunctionsToCharacter(Char)
 			return GenerarStatus(false, 'Cant get image of this character');
 		end;
 
-	    local fileName = Char.participant__name..'/'..Char.user__username;
+		local fileName = Char.participant__name..'/'..Char.user__username;
 		local FolderPath = "CharacterAi/"
-        local extension = string.match(Url, "%.([%a%d]+)$")
-		extension = '.'..extension
+		
 		if (not isfolder('CharacterAi')) then
 			makefolder('CharacterAi')
 		end
-
-		print(extension)
 		
-	    local NuevoFile = writefile(FolderPath .. fileName..extension, Respuesta);
+		local customAsset 
 		
-		local Image = getsynasset(FolderPath.. fileName ..extension) 
+		do
+			customAsset = getsynasset or getcustomasset
+		end
+		
+		local function SetIcon(url, fileName)
+			fileName = fileName:gsub("%p", "");
+			local Image
+			if isfile(FolderPath .. fileName .. ".png") then
+				Image = customAsset(FolderPath .. fileName .. ".png") 
+			else writefile(FolderPath .. fileName .. ".png", url);
+				Image = customAsset(FolderPath.. fileName .. ".png")
+			end; return Image
+		end;
+		
+		local Image = SetIcon(Respuesta, fileName)
 
-	    return GenerarStatus(true, Image)
+		return GenerarStatus(true, Image)
 	end
 
 	return Char
