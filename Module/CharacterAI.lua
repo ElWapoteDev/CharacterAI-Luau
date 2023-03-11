@@ -3,7 +3,7 @@ local Http = game:GetService("HttpService");
 local fetch = syn.request
 
 local CharacterAI = {}
-CharacterAI.Version = '1.1'
+CharacterAI.Version = '1.3'
 CharacterAI.__index = CharacterAI
 
 CharacterAI.GlobalSabes = {}
