@@ -1204,7 +1204,7 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 		return;
 	end;
  
-    if (mag < 7) and (jugador ~= Player) then
+    if (mag < 7) and (jugador ~= Player) and (PlayerFocus == nil) then
 		local res = CharacterActual:SendMessage(jugador.Name, jugador.DisplayName..': '..mensaje);
 
 		if (res['Status'] == false) then
