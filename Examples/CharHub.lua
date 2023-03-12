@@ -1193,7 +1193,7 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 			return;
 		end;
 
-		local SplitText = CharacterAI:SplitText(res['Body']['replies'][1]['text'])
+		local SplitText = CharacterAI:SplitText(res['Body']['replies'][1]['text']:gsub("%s+", " "))
 		
         for i, parte in pairs(SplitText) do
             local Entonces = table.concat(parte['Texto'], " ")
@@ -1212,7 +1212,7 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 			return;
 		end;
 
-		local SplitText = CharacterAI:SplitText(res['Body']['replies'][1]['text'])
+		local SplitText = CharacterAI:SplitText(res['Body']['replies'][1]['text']:gsub("%s+", " "))
 		
         for i, parte in pairs(SplitText) do
             local Entonces = table.concat(parte['Texto'], " ")
@@ -1236,7 +1236,7 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 		return;
 	end;
 
-	local SplitText = CharacterAI:SplitText(res['Body']['replies'][1]['text'])
+	local SplitText = CharacterAI:SplitText(res['Body']['replies'][1]['text']:gsub("%s+", " "))
 		
     for i, parte in pairs(SplitText) do
         local Entonces = table.concat(parte['Texto'], " ")
