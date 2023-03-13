@@ -803,15 +803,16 @@ else
 end;
 
 task.wait(3)
+local customAsset = getsynasset or getcustomasset;
 
 function SetIcon(url, fileName)
 	fileName = fileName:gsub("%p", "");
 	local Image
 
 	if isfile(fileName .. ".png") then
-		Image = getsynasset(fileName .. ".png") 
+		Image = customAsset(fileName .. ".png") 
 	else writefile(fileName .. ".png", game:HttpGet(url));
-		Image = getsynasset(fileName .. ".png")
+		Image = customAsset(fileName .. ".png")
 	end 
 
 	spawn(function()
