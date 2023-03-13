@@ -849,7 +849,7 @@ local Historiales = {};
 
 
 function EnAdd(CharRandom)
-    if CharRandom == Char then
+    if CharRandom == game.Players.LocalPlayer.Character then
         return;
     end;
     
