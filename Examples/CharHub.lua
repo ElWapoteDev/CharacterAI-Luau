@@ -1206,13 +1206,13 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 		end;
 
 		local SplitText = CharacterAI:SplitText(res['Body']['replies'][1]['text']:gsub("%s+", " "))
-		
+		Debo = false;
         for i, parte in pairs(SplitText) do
             local Entonces = table.concat(parte['Texto'], " ")
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Entonces, "All")
             task.wait(4)
         end
-			Debo = false
+			
 		return;
 	end;
  
@@ -1226,13 +1226,13 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 		end;
 
 		local SplitText = CharacterAI:SplitText(res['Body']['replies'][1]['text']:gsub("%s+", " "))
-		
+		Debo = false;
         for i, parte in pairs(SplitText) do
             local Entonces = table.concat(parte['Texto'], " ")
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Entonces, "All")
             task.wait(4)
         end
-		Debo = false
+		
 		return;
 	end;
 
@@ -1250,14 +1250,14 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 	end;
 
 	local SplitText = CharacterAI:SplitText(res['Body']['replies'][1]['text']:gsub("%s+", " "))
-		
+		Debo = false;
     for i, parte in pairs(SplitText) do
         local Entonces = table.concat(parte['Texto'], " ")
         print(Entonces)
         game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Entonces, "All")
         task.wait(4)
     end
-		Debo = false;
+		
 	return;
 end);
 
