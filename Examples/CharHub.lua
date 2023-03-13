@@ -941,6 +941,38 @@ function CharacterClick(character)
 	CharacterActual = character;
 end;
 
+function SetSecondCharacters(tabla)
+		ClearScroll(Personajes)
+		Personajes.CanvasSize = UDim2.new(0, 0, 0, 0)
+
+		for index, character in pairs(tabla) do
+			local CharName = character:GetName();
+			local CharCreator = character:GetCreatorName();
+			local Image = '';
+			local ImageExist = character:GetImage();
+			if (ImageExist['Status'] == true) then
+				Image = ImageExist['Body'];
+			end;
+
+			local MyCharacter = CrearSamplePersonaje(Personajes, CharName, CharCreator, Image);
+			GeneratePP(MyCharacter.Imagen, CharName)
+
+			MyCharacter.Click.MouseButton1Click:Connect(function()
+				CharacterClick(character);
+			end)
+
+			Personajes.CanvasSize = UDim2.new(0, Personajes.CanvasSize.X.Offset + 123, 0, 0)
+		 end;
+end;
+
+function GetFirstValue(table)
+    for i,v in pairs(table) do
+		return table[i];
+	end;
+
+	return false;
+end;
+
 function SetMainPageCharacters(Array)
     ClearScroll(Categorias)
 	ClearScroll(Personajes)
@@ -951,31 +983,19 @@ function SetMainPageCharacters(Array)
 		local MyCategory = CrearSampleCategoria(Categorias, category)
 
 		MyCategory.Click.MouseButton1Click:Connect(function()
-			ClearScroll(Personajes)
-			Personajes.CanvasSize = UDim2.new(0, 0, 0, 0)
-
-			for index, character in pairs(tabla) do
-				local CharName = character:GetName();
-				local CharCreator = character:GetCreatorName();
-				local Image = '';
-				local ImageExist = character:GetImage();
-				if (ImageExist['Status'] == true) then
-					Image = ImageExist['Body'];
-				end;
-
-				local MyCharacter = CrearSamplePersonaje(Personajes, CharName, CharCreator, Image);
-				GeneratePP(MyCharacter.Imagen, CharName)
-
-				MyCharacter.Click.MouseButton1Click:Connect(function()
-					CharacterClick(character);
-				end)
-
-				Personajes.CanvasSize = UDim2.new(0, Personajes.CanvasSize.X.Offset + 123, 0, 0)
-		    end;
+		    SetSecondCharacters(tabla)
 		end);
 
 		Categorias.CanvasSize = UDim2.new(0, Categorias.CanvasSize.X.Offset + 123, 0, 0)
 	end;
+
+	local FirstValue = GetFirstValue(Array)
+
+	if (FirstValue == false) then
+		return
+	end;
+
+	SetSecondCharacters(FirstValue)
 end;
 
 function SetRecentCharactes(Array)
@@ -1089,6 +1109,8 @@ end;
 
 
 
+
+
 MiCarga:SetLoadState('Fetching characters...');
 
 repeat task.wait(1)
@@ -1151,6 +1173,7 @@ TextBox.FocusLost:Connect(function(enter)
 end);
 
 MiCarga:SetLoadState('Placing characters in the gui...')
+
 SetMainPageCharacters(CharsMainPage.Body);
 SetRecentCharactes(RecentChars.Body);
 
