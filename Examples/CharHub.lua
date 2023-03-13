@@ -841,6 +841,7 @@ local Char = Player.Character;
 local CharsMainPage;
 local RecentChars;
 
+local Debo = false;
 local PlayerFocus;
 local CharacterActual;
 local Historiales = {};
@@ -1180,12 +1181,18 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
     if (CharacterActual == nil) then
 		return;
 	end;
+		
+    if (getfenv().WaitAnswer == true) and (Debo == true) then
+		
+		return;
+	end;
 
 	local jugador = Players[messageData.FromSpeaker]
 	local mensaje = messageData.Message
 	local mag = (jugador.Character.HumanoidRootPart.Position - Char.HumanoidRootPart.Position).magnitude
     
 	if (jugador == Player) and (mensaje:sub(1,1) == '!') then
+		Debo = true
 		local res = CharacterActual:SendMessage(jugador.Name, jugador.DisplayName..': '..mensaje);
 
 		if (res['Status'] == false) then
@@ -1200,11 +1207,12 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Entonces, "All")
             task.wait(4)
         end
-
+			Debo = false
 		return;
 	end;
  
     if (mag < 7) and (jugador ~= Player) and (PlayerFocus == nil) then
+		Debo = true
 		local res = CharacterActual:SendMessage(jugador.Name, jugador.DisplayName..': '..mensaje);
 
 		if (res['Status'] == false) then
@@ -1219,14 +1227,14 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Entonces, "All")
             task.wait(4)
         end
-
+		Debo = false
 		return;
 	end;
 
     if (PlayerFocus == nil) or (jugador.Character ~= PlayerFocus) then
 		return;
 	end;
-
+		Debo = true
 	print(mensaje.. ' -  privado');
 
 	local res = CharacterActual:SendMessage(jugador.Name, jugador.DisplayName..': '..mensaje);
@@ -1244,7 +1252,7 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
         game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Entonces, "All")
         task.wait(4)
     end
-
+		Debo = false;
 	return;
 end);
 
