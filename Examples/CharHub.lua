@@ -1,5 +1,5 @@
-
 local TOKEN = getfenv().YourToken
+repeat wait() until game:IsLoaded();
 local CharacterAI = loadstring(game:HttpGet('https://raw.githubusercontent.com/ElWapoteDev/CharacterAI-Luau/main/Module/CharacterAI.lua', true))(); 
 local MySession = CharacterAI.new(TOKEN)
 
