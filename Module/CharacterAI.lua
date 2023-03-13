@@ -1,6 +1,6 @@
 --Modulo Character.AI
 local Http = game:GetService("HttpService");
-local fetch = syn and syn.request or request;
+local fetch = (syn and syn.request) or (request);
 
 local CharacterAI = {}
 CharacterAI.Version = '1.4'
