@@ -1156,6 +1156,11 @@ SetRecentCharactes(RecentChars.Body);
 
 MiCarga:SetLoadState('Placing click detectors...')
 for index, player in pairs(Players:GetChildren()) do
+	player.CharacterAdded:Connect(function(CharUwU)
+	    local Head = CharUwU:WaitForChild('Head')
+		task.wait(1)
+		EnAdd(CharUwU)
+	end)
 	if (not player.Character) then
 		continue;
 	end;
