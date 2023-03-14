@@ -1120,12 +1120,12 @@ local Intentos = 1
 if (IsFunctional == false) then
 	--CargadonTexto.TextScaled = true
 
-    repeat task.wait(6)
-		Intentos = Intentos +1
-		IsFunctional = CharacterAI:IsOnline()
-                MiCarga:SetLoadState('Character.AI is down... tries: '..Intentos);
 
-    until IsFunctional == true;	
+
+    MiCarga:SetLoadState('Character.AI is down for maintenance...');
+    task.wait(5)
+    MiCarga:Stop('a');
+    return;
 end;
 
 repeat task.wait(1)
