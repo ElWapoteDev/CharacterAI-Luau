@@ -424,6 +424,24 @@ function CharacterAI:UserIsInWaitlist()
 	return Respuesta['Body']['config']['waitlist']
 end
 
+function CharacterAI:IsOnline()
+    local Url = 'https://beta.character.ai/';
+
+	local succ, Respuesta = pcall(function()
+	    return game:HttpGet(Url);
+	end);
+
+    if (succ == false) then
+		return false;
+	end;
+
+	if Respuesta:find("We're temporarily down for maintenance") and #Respuesta < 2500 then
+		return false;
+	end;
+	
+	return true;
+end;
+
 function CharacterAI:GetMainPageCharacters()
 	local Url = 'https://beta.character.ai/chat/curated_categories/characters/';
 	local Respuesta = CharacterAI:HTTPRequest(Url, 'GET', nil, true);
