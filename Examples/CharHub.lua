@@ -1115,12 +1115,14 @@ end;
 MiCarga:SetLoadState('Fetching characters...');
 
 local IsFunctional = CharacterAI:IsOnline()
+local Intentos = 1
 
 if (IsFunctional == false) then
-    MiCarga:SetLoadState('Character.AI is down for maintenance... retrying');
+	--CargadonTexto.TextScaled = true
+    MiCarga:SetLoadState('Character.AI is down... tries: '..Intentos);
 
     repeat task.wait(6)
-
+		Intentos = Intentos +1
     CharsMainPage = MySession:GetMainPageCharacters();
     RecentChars = MySession:GetRecentCharacters();
 
