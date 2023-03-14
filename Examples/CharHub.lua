@@ -1122,11 +1122,10 @@ if (IsFunctional == false) then
 
     repeat task.wait(6)
 		Intentos = Intentos +1
-    CharsMainPage = MySession:GetMainPageCharacters();
-    RecentChars = MySession:GetRecentCharacters();
-    MiCarga:SetLoadState('Character.AI is down... tries: '..Intentos);
+		IsFunctional = CharacterAI:IsOnline()
+                MiCarga:SetLoadState('Character.AI is down... tries: '..Intentos);
 
-    until CharacterAI:IsOnline() == true;	
+    until IsFunctional == true;	
 end;
 
 repeat task.wait(1)
