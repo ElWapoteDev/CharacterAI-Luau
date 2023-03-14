@@ -1237,6 +1237,7 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 	if (jugador == Player) and (mensaje:sub(1,1) == '!') then
 		Debo = true
 		local res = CharacterActual:SendMessage(jugador.Name, jugador.DisplayName..': '..mensaje);
+		Debo = false;
 
 		if (res['Status'] == false) then
 			warn('Error generating response: '.. res['Body'])
@@ -1256,7 +1257,6 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 		local SplitText = CharacterAI:SplitText(ReplyGet['text']:gsub("%s+", " "))
 
 
-		Debo = false;
 		for i, parte in pairs(SplitText) do
 			local Entonces = table.concat(parte['Texto'], " ")
 			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Entonces, "All")
@@ -1269,6 +1269,7 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 	if (mag < 7) and (jugador ~= Player) and (PlayerFocus == nil) then
 		Debo = true
 		local res = CharacterActual:SendMessage(jugador.Name, jugador.DisplayName..': '..mensaje);
+		Debo = false;
 
 		if (res['Status'] == false) then
 			warn('Error generating response: '.. res['Body'])
@@ -1289,7 +1290,6 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 		local SplitText = CharacterAI:SplitText(ReplyGet['text']:gsub("%s+", " "))
 
 
-		Debo = false;
 		for i, parte in pairs(SplitText) do
 			local Entonces = table.concat(parte['Texto'], " ")
 			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Entonces, "All")
@@ -1306,6 +1306,7 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 	print(mensaje.. ' -  privado');
 
 	local res = CharacterActual:SendMessage(jugador.Name, jugador.DisplayName..': '..mensaje);
+	Debo = false;
 
 	if (res['Status'] == false) then
 		warn('Error generating response: '.. res['Body'])
@@ -1325,7 +1326,6 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 	local SplitText = CharacterAI:SplitText(ReplyGet['text']:gsub("%s+", " "))
 
 
-	Debo = false;
 	for i, parte in pairs(SplitText) do
 		local Entonces = table.concat(parte['Texto'], " ")
 		print(Entonces)
