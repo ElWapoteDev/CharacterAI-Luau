@@ -1243,7 +1243,19 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 			return;
 		end;
 
-		local SplitText = CharacterAI:SplitText(res['Body']['replies'][1]['text']:gsub("%s+", " "))
+		if (#res['Body']['replies'] == 0 then
+		    notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)
+		    return;
+		end;
+				
+		local ReplyGet = GetFirstValue(res['Body']['replies'])
+		if (ReplyGet == false) then
+		    notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)					
+	        end
+		
+		local SplitText = CharacterAI:SplitText(ReplyGet['text']:gsub("%s+", " "))
+				
+				
 		Debo = false;
         for i, parte in pairs(SplitText) do
             local Entonces = table.concat(parte['Texto'], " ")
@@ -1262,8 +1274,21 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 			warn('Error generating response: '.. res['Body'])
 			return;
 		end;
-
-		local SplitText = CharacterAI:SplitText(res['Body']['replies'][1]['text']:gsub("%s+", " "))
+		
+			
+		if (#res['Body']['replies'] == 0 then
+		    notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)
+		    return;
+		end;
+				
+		local ReplyGet = GetFirstValue(res['Body']['replies'])
+		if (ReplyGet == false) then
+		    notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)					
+	        end
+		
+		local SplitText = CharacterAI:SplitText(ReplyGet['text']:gsub("%s+", " "))
+				
+				
 		Debo = false;
         for i, parte in pairs(SplitText) do
             local Entonces = table.concat(parte['Texto'], " ")
@@ -1287,7 +1312,19 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 		return;
 	end;
 
-	local SplitText = CharacterAI:SplitText(res['Body']['replies'][1]['text']:gsub("%s+", " "))
+		if (#res['Body']['replies'] == 0 then
+		    notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)
+		    return;
+		end;
+				
+		local ReplyGet = GetFirstValue(res['Body']['replies'])
+		if (ReplyGet == false) then
+		    notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)					
+	        end
+		
+		local SplitText = CharacterAI:SplitText(ReplyGet['text']:gsub("%s+", " "))
+				
+				
 		Debo = false;
     for i, parte in pairs(SplitText) do
         local Entonces = table.concat(parte['Texto'], " ")
