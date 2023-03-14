@@ -391,7 +391,7 @@ local function JDHW_fake_script() -- LoadingScreen.LocalScript
 	function IniciarPantallaCarga()
 		local TweenService = game:GetService('TweenService')
 		local Lighting = game:GetService('Lighting')
-		
+
 		local Mensajes = {
 			"Soon you'll be chatting with your favorite hero through Character.AI's advanced chatbot.",
 			"Get ready for a unique and unforgettable experience!",
@@ -426,7 +426,7 @@ local function JDHW_fake_script() -- LoadingScreen.LocalScript
 			"Character.AI can generate dialogue, emotions, actions and more for your characters. What will you make them say and do?",
 			"Loading Character.AI... This may take a while. It has a lot of data to process."
 		}
-		
+
 		local Imagesuwu = {
 			'rbxassetid://12759400609',
 			'rbxassetid://12759420606',
@@ -435,17 +435,17 @@ local function JDHW_fake_script() -- LoadingScreen.LocalScript
 			'rbxassetid://12760732378',
 			'rbxassetid://12760785601'
 		}
-	
+
 		local LogConf = script.Parent.PantallaCarga:WaitForChild('Giratorio');
 		local DisClaimger = script.Parent.PantallaCarga:WaitForChild('Inspiracion');
 		local PreInsano = script.Parent.PantallaCarga:WaitForChild('PreInsano');
 		local StateLoad = script.Parent.PantallaCarga:WaitForChild('CargadonTexto')
-	
+
 		local Blur = Instance.new('BlurEffect', Lighting)
 		local EnAnim = true
 		local CurrentRot = 0
 		Blur.Size = 0
-		
+
 		local function MostrarPantallaInsana(trans)
 			for i,v in pairs(script.Parent:GetDescendants()) do
 				if v:IsA('Frame') then
@@ -453,13 +453,13 @@ local function JDHW_fake_script() -- LoadingScreen.LocalScript
 						BackgroundTransparency = trans;
 					}):Play();
 				end
-				
+
 				if v:IsA('TextLabel') then
 					TweenService:Create(v, TweenInfo.new(0.5), {
 						TextTransparency = trans;
 					}):Play();
 				end
-				
+
 				if v:IsA('ImageLabel') then
 					TweenService:Create(v, TweenInfo.new(0.5), {
 						ImageTransparency = trans;
@@ -472,77 +472,77 @@ local function JDHW_fake_script() -- LoadingScreen.LocalScript
 				end
 			end
 		end
-		
+
 		local function ChageText()
 			if (EnAnim == false) then
 				return;
 			end
-			
+
 			local TextoElegido = Mensajes[math.random(1, #Mensajes)];
 			local ImageElegido = Imagesuwu[math.random(1, #Imagesuwu)];
 			local TInfo = TweenInfo.new(0.5)
-			
+
 			local Tween1 = TweenService:Create(DisClaimger, TInfo, { TextTransparency = 1 });
 			local Tween2 = TweenService:Create(PreInsano, TInfo, { ImageTransparency = 1});
-			
+
 			Tween1:Play();
 			Tween2:Play();
-			
+
 			Tween1.Completed:Connect(function()
 				DisClaimger.Text = TextoElegido;
 				PreInsano.Image = ImageElegido;
 				local Tween3 = TweenService:Create(DisClaimger, TInfo, { TextTransparency = 0 });
 				local Tween4 = TweenService:Create(PreInsano, TInfo, { ImageTransparency = 0});
-	
+
 				Tween3:Play();
 				Tween4:Play();
-				
+
 				task.wait(4);
 				ChageText();
 			end)
 		end
-		
+
 		local function AnimarRotatorio()
 			if (EnAnim == false) then
 				return;
 			end
-			
+
 			CurrentRot = CurrentRot + 360
-			
+
 			local OwO = TweenService:Create(LogConf, TweenInfo.new(2, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut), {
 				Rotation = CurrentRot
 			})
 			OwO:Play()
 			OwO.Completed:Connect(AnimarRotatorio)
 		end
-		
-	
-		
+
+
+
 		TweenService:Create(Blur, TweenInfo.new(1), {
 			Size = 25
 		}):Play();
-		
+
 		spawn(function()
 			task.wait(1)
 			AnimarRotatorio();
 			ChageText();
 			MostrarPantallaInsana(0)
 		end)
-		
-	
+
+
 		local Funciones = {}
-		
+
 		function Funciones:SetLoadState(texto: string)
 			StateLoad.Text = texto
 		end
-		
+
 		function Funciones:Stop(texto: string)
 			EnAnim = false;
-			
+
 			TweenService:Create(Blur, TweenInfo.new(6), {
 				Size = 0
 			}):Play();
-			
+
 			Blur:Destroy();
 			MostrarPantallaInsana(1)
 
@@ -552,7 +552,7 @@ local function JDHW_fake_script() -- LoadingScreen.LocalScript
 				end;
 			end)
 		end
-		
+
 		return Funciones
 	end;
 end
@@ -597,7 +597,7 @@ function CrearSampleCategoria(Parent, NombreCategoria)
 	Click.BackgroundTransparency = 1.000
 	Click.BorderSizePixel = 0
 	Click.Size = UDim2.new(1, 0, 1, 0)	
-	
+
 	return SampleCategoria
 end
 
@@ -662,8 +662,8 @@ function CrearSamplePersonaje(Parent, NombreP, CreadorP, ImagenP)
 	Click_2.BackgroundTransparency = 1.000
 	Click_2.BorderSizePixel = 0
 	Click_2.Size = UDim2.new(1, 0, 1, 0)
-	
-    return SamplePersonaje	
+
+	return SamplePersonaje	
 end
 
 function CrearSampleReciente(Parent, NombreP, ImagenP)
@@ -712,7 +712,7 @@ function CrearSampleReciente(Parent, NombreP, ImagenP)
 	Click_3.BackgroundTransparency = 1.000
 	Click_3.BorderSizePixel = 0
 	Click_3.Size = UDim2.new(1, 0, 1, 0)	
-	
+
 	return SampleReciente
 end
 
@@ -790,16 +790,16 @@ function CrearSampleSearch(Parent, NombreP, DescripcionP, CreadorP, Interaccione
 	Click_4.BackgroundTransparency = 1.000
 	Click_4.BorderSizePixel = 0
 	Click_4.Size = UDim2.new(1, 0, 1, 0)
-	
+
 	return SampleSearch
 end
 
 --Codigo--
 
 if (TOKEN == "") or (TOKEN == nil) then
-    MiCarga:SetLoadState('Logged in as Guest... Preferable to use a token')
+	MiCarga:SetLoadState('Logged in as Guest... Preferable to use a token')
 else 
-    MiCarga:SetLoadState("Functional Token. You're in, baby!")
+	MiCarga:SetLoadState("Functional Token. You're in, baby!")
 end;
 
 task.wait(3)
@@ -850,10 +850,10 @@ local Historiales = {};
 
 
 function EnAdd(CharRandom)
-    if CharRandom == game.Players.LocalPlayer.Character then
-        return;
-    end;
-    
+	if CharRandom == game.Players.LocalPlayer.Character then
+		return;
+	end;
+
 	local Root = CharRandom:WaitForChild("HumanoidRootPart")
 	Root.Size = Vector3.new(4,4,4)
 	Root.Transparency = 0.9
@@ -892,42 +892,42 @@ end
 
 
 function colorDeFondo()
-  local r = math.random()
-  local g = math.random() 
-  local b = math.random() 
-  local umbral = 2 
-  while r + g + b > umbral do 
-    r = math.random()
-    g = math.random()
-    b = math.random()
-   end 
-   local color = Color3.new(r,g,b)
-   return color 
+	local r = math.random()
+	local g = math.random() 
+	local b = math.random() 
+	local umbral = 2 
+	while r + g + b > umbral do 
+		r = math.random()
+		g = math.random()
+		b = math.random()
+	end 
+	local color = Color3.new(r,g,b)
+	return color 
 end 
 
 function GeneratePP(FrameLabel, Name)
-    local FirstLetter = Name:sub(1,1);
+	local FirstLetter = Name:sub(1,1);
 	local Label = Instance.new("TextLabel", FrameLabel);
 
-    FrameLabel.BackgroundTransparency = 0;
+	FrameLabel.BackgroundTransparency = 0;
 	FrameLabel.BackgroundColor3 = colorDeFondo()
 
-    Label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Label.BackgroundTransparency = 1.000
-    Label.Position = UDim2.new(0.2, 0, 0.2, 0)
-    Label.Size = UDim2.new(0.6, 0, 0.6, 0)
-    Label.Font = Enum.Font.Gotham
-    Label.Text = tostring(FirstLetter)
-    Label.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Label.TextScaled = true
-    Label.TextSize = 14.000
-    Label.TextWrapped = true
-    Label.TextXAlignment = Enum.TextXAlignment.Center
-    
+	Label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Label.BackgroundTransparency = 1.000
+	Label.Position = UDim2.new(0.2, 0, 0.2, 0)
+	Label.Size = UDim2.new(0.6, 0, 0.6, 0)
+	Label.Font = Enum.Font.Gotham
+	Label.Text = tostring(FirstLetter)
+	Label.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Label.TextScaled = true
+	Label.TextSize = 14.000
+	Label.TextWrapped = true
+	Label.TextXAlignment = Enum.TextXAlignment.Center
+
 end;
 
 function ClearScroll(Scroll)
-    for index, frame in pairs(Scroll:GetChildren()) do
+	for index, frame in pairs(Scroll:GetChildren()) do
 		if (not frame:IsA("Frame")) then
 			continue;
 		end;
@@ -937,37 +937,37 @@ function ClearScroll(Scroll)
 end;
 
 function CharacterClick(character)
-    notif:Notification("Chosen character.",character:GetName(),"GothamSemibold","Gotham",5)
-    MySession:GlobalHistoryReset();
+	notif:Notification("Chosen character.",character:GetName(),"GothamSemibold","Gotham",5)
+	MySession:GlobalHistoryReset();
 	CharacterActual = character;
 end;
 
 function SetSecondCharacters(tabla)
-		ClearScroll(Personajes)
-		Personajes.CanvasSize = UDim2.new(0, 0, 0, 0)
+	ClearScroll(Personajes)
+	Personajes.CanvasSize = UDim2.new(0, 0, 0, 0)
 
-		for index, character in pairs(tabla) do
-			local CharName = character:GetName();
-			local CharCreator = character:GetCreatorName();
-			local Image = '';
-			local ImageExist = character:GetImage();
-			if (ImageExist['Status'] == true) then
-				Image = ImageExist['Body'];
-			end;
+	for index, character in pairs(tabla) do
+		local CharName = character:GetName();
+		local CharCreator = character:GetCreatorName();
+		local Image = '';
+		local ImageExist = character:GetImage();
+		if (ImageExist['Status'] == true) then
+			Image = ImageExist['Body'];
+		end;
 
-			local MyCharacter = CrearSamplePersonaje(Personajes, CharName, CharCreator, Image);
-			GeneratePP(MyCharacter.Imagen, CharName)
+		local MyCharacter = CrearSamplePersonaje(Personajes, CharName, CharCreator, Image);
+		GeneratePP(MyCharacter.Imagen, CharName)
 
-			MyCharacter.Click.MouseButton1Click:Connect(function()
-				CharacterClick(character);
-			end)
+		MyCharacter.Click.MouseButton1Click:Connect(function()
+			CharacterClick(character);
+		end)
 
-			Personajes.CanvasSize = UDim2.new(0, Personajes.CanvasSize.X.Offset + 123, 0, 0)
-		 end;
+		Personajes.CanvasSize = UDim2.new(0, Personajes.CanvasSize.X.Offset + 123, 0, 0)
+	end;
 end;
 
 function GetFirstValue(table)
-    for i,v in pairs(table) do
+	for i,v in pairs(table) do
 		return table[i];
 	end;
 
@@ -975,16 +975,16 @@ function GetFirstValue(table)
 end;
 
 function SetMainPageCharacters(Array)
-    ClearScroll(Categorias)
+	ClearScroll(Categorias)
 	ClearScroll(Personajes)
 
-    Categorias.CanvasSize = UDim2.new(0,0,0,0)
-    for category, tabla in pairs(Array) do
+	Categorias.CanvasSize = UDim2.new(0,0,0,0)
+	for category, tabla in pairs(Array) do
 
 		local MyCategory = CrearSampleCategoria(Categorias, category)
 
 		MyCategory.Click.MouseButton1Click:Connect(function()
-		    SetSecondCharacters(tabla)
+			SetSecondCharacters(tabla)
 		end);
 
 		Categorias.CanvasSize = UDim2.new(0, Categorias.CanvasSize.X.Offset + 123, 0, 0)
@@ -1003,7 +1003,7 @@ function SetRecentCharactes(Array)
 	ClearScroll(Recientes)
 	Recientes.CanvasSize = UDim2.new(0, 0, 0, 0)
 
-    for index, character in pairs(Array) do
+	for index, character in pairs(Array) do
 		local CharName = character:GetName();
 		local CharCreator = character:GetCreatorName();
 		local Image = '';
@@ -1025,7 +1025,7 @@ function SetRecentCharactes(Array)
 end;
 
 function BusquedaPorExtId(external_id)
-    local Char = MySession:GetCharacterByExternalId(external_id);
+	local Char = MySession:GetCharacterByExternalId(external_id);
 	local ResultadosS = {}
 	if (Char['Status'] == false) then
 		return false;
@@ -1034,7 +1034,7 @@ function BusquedaPorExtId(external_id)
 	ClearScroll(Resultados);
 
 	ResultadosS[1] = Char['Body'];
-	
+
 	Resultados.CanvasSize = UDim2.new(0, 0, 0, 0)
 
 	for index, character in pairs(ResultadosS) do
@@ -1060,15 +1060,15 @@ end;
 
 function MostrarBusqueda(Query)
 	ClearScroll(Resultados);
-    local ResultadosS = MySession:SearchCharacters(Query);
+	local ResultadosS = MySession:SearchCharacters(Query);
 
 	if (ResultadosS['Status'] == false) then
-        notif:Notification("No results", "No results found: "..Query, "GothamSemibold", "Gotham", 5)
+		notif:Notification("No results", "No results found: "..Query, "GothamSemibold", "Gotham", 5)
 		return false;
 	end;
 
-    if (#ResultadosS.Body == 0) then
-        notif:Notification("No results", "No results found: "..Query, "GothamSemibold", "Gotham", 5)
+	if (#ResultadosS.Body == 0) then
+		notif:Notification("No results", "No results found: "..Query, "GothamSemibold", "Gotham", 5)
 	end
 
 	Resultados.CanvasSize = UDim2.new(0, 0, 0, 0)
@@ -1095,14 +1095,14 @@ function MostrarBusqueda(Query)
 end;
 
 function SeeSearchPage()
-    Interior.Visible = false;
+	Interior.Visible = false;
 	Top.Visible = false;
 	Resultados.Visible = true;
 	Buscador.Visible = true;
 end;
 
 function HideSearchPage()
-    Interior.Visible = true;
+	Interior.Visible = true;
 	Top.Visible = true;
 	Resultados.Visible = false;
 	Buscador.Visible = false;
@@ -1122,15 +1122,15 @@ if (IsFunctional == false) then
 
 
 
-    MiCarga:SetLoadState('Character.AI is down for maintenance...');
-    task.wait(5)
-    MiCarga:Stop('a');
-    return;
+	MiCarga:SetLoadState('Character.AI is down for maintenance...');
+	task.wait(5)
+	MiCarga:Stop('a');
+	return;
 end;
 
 repeat task.wait(1)
 
-    CharsMainPage = MySession:GetMainPageCharacters();
+	CharsMainPage = MySession:GetMainPageCharacters();
 	RecentChars = MySession:GetRecentCharacters();
 
 until CharsMainPage['Status'] == true;
@@ -1158,9 +1158,9 @@ end);
 
 Volver.MouseButton1Click:Connect(function()
 	HideSearchPage();
-    RecentChars = MySession:GetRecentCharacters();
+	RecentChars = MySession:GetRecentCharacters();
 
-    if (RecentChars['Status'] == false) then
+	if (RecentChars['Status'] == false) then
 		return;
 	end
 
@@ -1168,7 +1168,7 @@ Volver.MouseButton1Click:Connect(function()
 end);
 
 TextBox.FocusLost:Connect(function(enter)
-    if (not enter) then
+	if (not enter) then
 		return;
 	end;
 
@@ -1195,7 +1195,7 @@ SetRecentCharactes(RecentChars.Body);
 MiCarga:SetLoadState('Placing click detectors...')
 for index, player in pairs(Players:GetChildren()) do
 	player.CharacterAdded:Connect(function(CharUwU)
-	    local Head = CharUwU:WaitForChild('Head')
+		local Head = CharUwU:WaitForChild('Head')
 		task.wait(1)
 		EnAdd(CharUwU)
 	end)
@@ -1211,9 +1211,9 @@ for index, player in pairs(Players:GetChildren()) do
 end;
 
 Players.PlayerAdded:Connect(function(jugador)
-	
+
 	jugador.CharacterAdded:Connect(function(CharUwU)
-	    local Head = CharUwU:WaitForChild('Head')
+		local Head = CharUwU:WaitForChild('Head')
 		task.wait(1)
 		EnAdd(CharUwU)
 	end)
@@ -1221,19 +1221,19 @@ end)
 
 Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Connect(function(messageData) 
 
-    if (CharacterActual == nil) then
+	if (CharacterActual == nil) then
 		return;
 	end;
-		
-    if (getfenv().WaitAnswer == true) and (Debo == true) then
-		
+
+	if (getfenv().WaitAnswer == true) and (Debo == true) then
+
 		return;
 	end;
 
 	local jugador = Players[messageData.FromSpeaker]
 	local mensaje = messageData.Message
 	local mag = (jugador.Character.HumanoidRootPart.Position - Char.HumanoidRootPart.Position).magnitude
-    
+
 	if (jugador == Player) and (mensaje:sub(1,1) == '!') then
 		Debo = true
 		local res = CharacterActual:SendMessage(jugador.Name, jugador.DisplayName..': '..mensaje);
@@ -1243,30 +1243,30 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 			return;
 		end;
 
-		if (#res['Body']['replies'] == 0 then
-		    notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)
-		    return;
+		if (#res['Body']['replies'] == 0) then
+			notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)
+			return;
 		end;
-				
+
 		local ReplyGet = GetFirstValue(res['Body']['replies'])
 		if (ReplyGet == false) then
-		    notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)					
-	        end
-		
+			notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)					
+		end
+
 		local SplitText = CharacterAI:SplitText(ReplyGet['text']:gsub("%s+", " "))
-				
-				
+
+
 		Debo = false;
-        for i, parte in pairs(SplitText) do
-            local Entonces = table.concat(parte['Texto'], " ")
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Entonces, "All")
-            task.wait(4)
-        end
-			
+		for i, parte in pairs(SplitText) do
+			local Entonces = table.concat(parte['Texto'], " ")
+			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Entonces, "All")
+			task.wait(4)
+		end
+
 		return;
 	end;
- 
-    if (mag < 7) and (jugador ~= Player) and (PlayerFocus == nil) then
+
+	if (mag < 7) and (jugador ~= Player) and (PlayerFocus == nil) then
 		Debo = true
 		local res = CharacterActual:SendMessage(jugador.Name, jugador.DisplayName..': '..mensaje);
 
@@ -1274,35 +1274,35 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 			warn('Error generating response: '.. res['Body'])
 			return;
 		end;
-		
-			
-		if (#res['Body']['replies'] == 0 then
-		    notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)
-		    return;
+
+
+		if (#res['Body']['replies'] == 0) then
+			notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)
+			return;
 		end;
-				
+
 		local ReplyGet = GetFirstValue(res['Body']['replies'])
 		if (ReplyGet == false) then
-		    notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)					
-	        end
-		
+			notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)					
+		end
+
 		local SplitText = CharacterAI:SplitText(ReplyGet['text']:gsub("%s+", " "))
-				
-				
+
+
 		Debo = false;
-        for i, parte in pairs(SplitText) do
-            local Entonces = table.concat(parte['Texto'], " ")
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Entonces, "All")
-            task.wait(4)
-        end
-		
+		for i, parte in pairs(SplitText) do
+			local Entonces = table.concat(parte['Texto'], " ")
+			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Entonces, "All")
+			task.wait(4)
+		end
+
 		return;
 	end;
 
-    if (PlayerFocus == nil) or (jugador.Character ~= PlayerFocus) then
+	if (PlayerFocus == nil) or (jugador.Character ~= PlayerFocus) then
 		return;
 	end;
-		Debo = true
+	Debo = true
 	print(mensaje.. ' -  privado');
 
 	local res = CharacterActual:SendMessage(jugador.Name, jugador.DisplayName..': '..mensaje);
@@ -1312,27 +1312,27 @@ Replicated.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Conn
 		return;
 	end;
 
-		if (#res['Body']['replies'] == 0 then
-		    notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)
-		    return;
-		end;
-				
-		local ReplyGet = GetFirstValue(res['Body']['replies'])
-		if (ReplyGet == false) then
-		    notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)					
-	        end
-		
-		local SplitText = CharacterAI:SplitText(ReplyGet['text']:gsub("%s+", " "))
-				
-				
-		Debo = false;
-    for i, parte in pairs(SplitText) do
-        local Entonces = table.concat(parte['Texto'], " ")
-        print(Entonces)
-        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Entonces, "All")
-        task.wait(4)
-    end
-		
+	if (#res['Body']['replies'] == 0) then
+		notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)
+		return;
+	end;
+
+	local ReplyGet = GetFirstValue(res['Body']['replies'])
+	if (ReplyGet == false) then
+		notif:Notification("Error.", "Error sending a response", "GothamSemibold", "Gotham", 5)					
+	end
+
+	local SplitText = CharacterAI:SplitText(ReplyGet['text']:gsub("%s+", " "))
+
+
+	Debo = false;
+	for i, parte in pairs(SplitText) do
+		local Entonces = table.concat(parte['Texto'], " ")
+		print(Entonces)
+		game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Entonces, "All")
+		task.wait(4)
+	end
+
 	return;
 end);
 
