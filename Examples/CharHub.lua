@@ -1114,6 +1114,19 @@ end;
 
 MiCarga:SetLoadState('Fetching characters...');
 
+local IsFunctional = CharacterAI:IsOnline()
+
+if (IsFunctional == false) then
+    MiCarga:SetLoadState('Character.AI is down for maintenance... retrying');
+
+    repeat task.wait(6)
+
+    CharsMainPage = MySession:GetMainPageCharacters();
+    RecentChars = MySession:GetRecentCharacters();
+
+    until CharacterAI:IsOnline() == true;	
+end;
+
 repeat task.wait(1)
 
     CharsMainPage = MySession:GetMainPageCharacters();
