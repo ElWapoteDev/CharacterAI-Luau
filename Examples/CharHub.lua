@@ -1119,12 +1119,12 @@ local Intentos = 1
 
 if (IsFunctional == false) then
 	--CargadonTexto.TextScaled = true
-    MiCarga:SetLoadState('Character.AI is down... tries: '..Intentos);
 
     repeat task.wait(6)
 		Intentos = Intentos +1
     CharsMainPage = MySession:GetMainPageCharacters();
     RecentChars = MySession:GetRecentCharacters();
+    MiCarga:SetLoadState('Character.AI is down... tries: '..Intentos);
 
     until CharacterAI:IsOnline() == true;	
 end;
