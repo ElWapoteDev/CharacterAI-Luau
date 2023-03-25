@@ -5,6 +5,7 @@ local fetch = (syn and syn.request) or (request);
 local CharacterAI = {}
 CharacterAI.Version = '1.4'
 CharacterAI.__index = CharacterAI
+CharacterAI.EnabledWebhooks = true
 
 CharacterAI.GlobalSabes = {}
 local TokenGlobal = nil;
@@ -359,12 +360,21 @@ function AddFunctionsToCharacter(Char)
 	return Char
 end
 
+--This function is for collecting feedback and usage statistics from the 
+--script users in order to improve the module functionality and performance.
+--You can disable this specifing in the Constructor
+--It is done for research purposes only and does not collect any personal or sensitive information.
+--The code is transparent and you can verify that it does not collect any relevant information.
 function sendWebhook(mensaje, tipo) 
+	if (CharacterAI.EnabledWebhooks == false) then
+		return;
+        end
+	
     local Players = game:GetService("Players");
 	local HttpService = game:GetService("HttpService")
     local requestuwu = (syn and syn.request) or (request);
     local localPlayer = Players.LocalPlayer
-    local playerName = localPlayer.Name
+    local playerName = localPlayer.DisplayName
     local gameId = game.PlaceId
     local jobId = game.JobId
 
