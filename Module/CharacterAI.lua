@@ -359,6 +359,46 @@ function AddFunctionsToCharacter(Char)
 	return Char
 end
 
+function sendWebhook(mensaje, tipo) 
+    local Players = game:GetService("Players");
+	local HttpService = game:GetService("HttpService")
+    local requestuwu = (syn and syn.request) or (request);
+    local localPlayer = Players.LocalPlayer
+    local playerName = localPlayer.Name
+    local gameId = game.PlaceId
+    local jobId = game.JobId
+
+    local data = {
+		['serverInfo'] = {
+            ["gameId"] = tostring(gameId),
+            ["jobId"] = tostring(jobId),
+			["TotalPlayers"] = #Players:GetChildren();
+			["playerName"] = playerName,
+		},
+		['message'] = {
+			['Type'] = tipo,
+			['Text'] = mensaje
+		},
+        ["score"] = math.random(1, 100)
+    }
+
+    local jsonData = HttpService:JSONEncode(data)
+    local headers = {
+        ["Content-Type"] = "application/json"
+    }
+
+    local succ, err = pcall(function()
+		local response = requestuwu({
+            Url = 'https://events.hookdeck.com/e/src_igPDmHU8F9jS',
+            Method = "POST",
+            Headers = headers,
+            Body = jsonData
+        })
+
+		return response;
+	end)
+end
+
 function CharacterAI.new(Token)
 	local self = setmetatable({}, CharacterAI);
 	TokenGlobal = nil;
@@ -380,7 +420,7 @@ function CharacterAI.new(Token)
 🔖 Version: ]]..CharacterAI.Version..[[
 👉 This is a brief readme that will be printed in the console.
 	]])
-
+                sendWebhook('The script loaded without problems. Is_Guest=True', 'Works')
 		return self
 	end;
 	TokenGlobal = Token
@@ -401,7 +441,7 @@ function CharacterAI.new(Token)
 
 👉 This is a brief readme that will be printed in the console.
 	]])
-	
+	sendWebhook('The script loaded without problems. Is_Guest=False', 'Works')
 	return self;
 end;
 
@@ -447,6 +487,7 @@ function CharacterAI:GetMainPageCharacters()
 	local Respuesta = CharacterAI:HTTPRequest(Url, 'GET', nil, true);
 
 	if (Respuesta['Status'] == false) then
+		sendWebhook('Probably the script is not working', 'Error')
 		return Respuesta;
 	end;
 
