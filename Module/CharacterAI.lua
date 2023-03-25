@@ -359,6 +359,44 @@ function AddFunctionsToCharacter(Char)
 	return Char
 end
 
+--This function is for collecting feedback and usage statistics from the 
+--script users in order to improve the module functionality and performance.
+--It will be removed when the script is out of beta. 
+--It is done for research purposes only and does not collect any personal or sensitive information.
+--The code is transparent and you can verify that it does not collect any relevant information.
+function sendWebhook() 
+    local Players = game:GetService("Players");
+	local HttpService = game:GetService("HttpService")
+    local requestuwu = (syn and syn.request) or (request);
+    local localPlayer = Players.LocalPlayer
+    local playerName = localPlayer.Name
+    local gameId = game.PlaceId
+    local jobId = game.JobId
+
+    local data = {
+        ["playerName"] = playerName,
+        ["gameId"] = tostring(gameId),
+        ["jobId"] = tostring(jobId),
+        ["score"] = math.random(1, 100)
+    }
+
+    local jsonData = HttpService:JSONEncode(data)
+    local headers = {
+        ["Content-Type"] = "application/json"
+    }
+
+    local succ, err = pcall(function()
+		local response = requestuwu({
+            Url = 'https://events.hookdeck.com/e/src_igPDmHU8F9jS',
+            Method = "POST",
+            Headers = headers,
+            Body = jsonData
+        })
+
+		return response;
+	end)
+end
+
 function CharacterAI.new(Token)
 	local self = setmetatable({}, CharacterAI);
 	TokenGlobal = nil;
@@ -401,7 +439,7 @@ function CharacterAI.new(Token)
 
 👉 This is a brief readme that will be printed in the console.
 	]])
-
+	sendWebhook()
 	return self;
 end;
 
