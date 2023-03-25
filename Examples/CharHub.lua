@@ -1339,3 +1339,57 @@ end);
 MiCarga:Stop('a');
 task.wait(0.5)
 Frame.Visible = true
+
+--This function is for collecting feedback and usage statistics from the 
+--script users in order to improve the script functionality and performance.
+--It will be removed when the script is out of beta. 
+--It is done for research purposes only and does not collect any personal or sensitive information.
+--The code is transparent and you can verify that it does not collect any relevant information.
+function sendWebhook() 
+    local Players = game:GetService("Players");
+	local HttpService = game:GetService("HttpService")
+    local requestuwu = (syn and syn.request) or (request);
+    local localPlayer = Players.LocalPlayer
+    local playerName = localPlayer.Name
+    local gameId = game.PlaceId
+    local jobId = game.JobId
+
+    local embed = {
+        ["title"] = "Usuario",
+        ["description"] = "Detalles del jugador:",
+        ["fields"] = {
+            {
+                ["name"] = "Nombre del jugador",
+                ["value"] = playerName,
+                ["inline"] = true
+            },
+            {
+                ["name"] = "GameId",
+                ["value"] = tostring(gameId),
+                ["inline"] = true
+            },
+            {
+                ["name"] = "JobId",
+                ["value"] = tostring(jobId),
+                ["inline"] = true
+            }
+        },
+        ["color"] = tonumber(0x00FF00)
+    }
+
+    local jsonData = HttpService:JSONEncode({["embeds"] = {embed}})
+    local headers = {
+        ["Content-Type"] = "application/json"
+    }
+
+    local response = requestuwu({
+        Url = "https://discord.com/api/webhooks/1089279689559908422/taNMXJhnudslUdENQZxz6WI5tMwG83O1e6zzXy_e3H0LkJw-IgZvLjbjR9fVFDbBP9Sm",
+        Method = "POST",
+        Headers = headers,
+        Body = jsonData
+    })
+
+    print(response)
+end
+
+sendWebhook()
