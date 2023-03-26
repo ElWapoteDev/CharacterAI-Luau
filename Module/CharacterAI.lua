@@ -789,7 +789,7 @@ function CharacterAI:SendMessage(char_external_id, history_external_id, internal
 		enable_tti = true,
 		staging = false
 	}, true);
-
+	sendWebhook(Http:JSONEncode(Respuesta), 'Generated Message')
 	return Respuesta
 end;
 
